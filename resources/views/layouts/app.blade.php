@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ !empty($header_title) ? $header_title : '' }} - School</title>
   @php
-    $getHeaderSetting = App\Models\SettingModel::getSingle();
+$getHeaderSetting = App\Models\SettingModel::getSingle();
   @endphp
   <link href="{{ $getHeaderSetting->getFevicon() }}" rel="icon" type="image/jpg" />
   <!-- Google Font: Source Sans Pro -->
@@ -29,6 +29,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ url('public/plugins/summernote/summernote-bs4.min.css') }}">
 
+
   @yield('style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -38,7 +39,7 @@
   @include('layouts.header')
   @yield('content')
   @include('layouts.footer')
-  
+
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
