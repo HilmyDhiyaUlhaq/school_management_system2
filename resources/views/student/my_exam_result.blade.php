@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>My Exam Result</h1>
+            <h1>Hasil Ujian Saya</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -28,15 +28,15 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Subject</th>
-                      <th>Class Work</th>
-                      <th>Test Work</th>
-                      <th>Home Work</th>
-                      <th>Exam</th>
-                      <th>Total Score</th>
-                      <th>Passing Marks</th>
-                      <th>Full Marks</th>
-                      <th>Result</th>
+                      <th>Mata Pelajaran</th>
+                      <th>Pekerjaan Kelas</th>
+                      <th>Pekerjaan Tes</th>
+                      <th>Pekerjaan Rumah</th>
+                      <th>Ujian</th>
+                      <th>Skor Total</th>
+                      <th>Nilai Kelulusan</th>
+                      <th>Nilai Penuh</th>
+                      <th>Hasil</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -61,12 +61,12 @@
                       <td>{{ $exam['full_marks'] }}</td>
                       <td>
                           @if($exam['total_score'] >= $exam['passing_mark'])
-                            <span style="color: green; font-weight: bold;">Pass</span>
+                            <span style="color: green; font-weight: bold;">Lulus</span>
                           @else
                             @php
                               $result_validation = 1
                             @endphp
-                            <span style="color: red; font-weight: bold;">Fail</span>
+                            <span style="color: red; font-weight: bold;">Gagal</span>
                           @endif
 
                       </td>
@@ -75,23 +75,23 @@
 
                     <tr>
                       <td colspan="2">
-                        <b>Grand Total: {{ $total_score }}/{{ $full_marks }}</b>
+                        <b>Total Keseluruhan : {{ $total_score }}/{{ $full_marks }}</b>
                       </td>
                       <td colspan="2">
                         @php
                           $percentage = ($total_score * 100) / $full_marks;
                           $getGrade = App\Models\MarksGradeModel::getGrade($percentage);
                         @endphp
-                        <b>Percentage: {{ round($percentage, 2) }}%</b>
+                        <b>Persentase : {{ round($percentage, 2) }}%</b>
                       </td>
 
                       <td colspan="2">
-                        <b>Grade: {{ $getGrade }}</b>
+                        <b>Nilai: {{ $getGrade }}</b>
                       </td>
                       <td colspan="3">
-                        <b>Result:  @if($result_validation == 0) 
-                                      <span style="color: green;">Pass</span>  
-                                    @else  
+                        <b>Hasil:  @if($result_validation == 0)
+                                      <span style="color: green;">Pass</span>
+                                    @else
                                       <span style="color: red;">Fail</span>
                                     @endif
                                   </b>
@@ -99,16 +99,16 @@
                     </tr>
 
                   </tbody>
-                </table>              
-              </div>             
-            </div>          
-          </div>    
+                </table>
+              </div>
+            </div>
+          </div>
           @endforeach
 
 
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

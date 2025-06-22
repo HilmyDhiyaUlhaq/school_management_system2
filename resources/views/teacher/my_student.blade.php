@@ -10,9 +10,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>My Student List</h1>
+            <h1>Daftar Siswa Saya </h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -26,23 +26,23 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
 
-        
-         
-         
+
+
+
 
 
             @include('_message')
-            
+
             <!-- /.card -->
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">My Student List</h3>
+                <h3 class="card-title">Daftar Siswa Saya</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0" style="overflow: auto;">
@@ -50,22 +50,22 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Profile Pic</th>
-                      <th>Student Name</th>
+                      <th>Foto Profil</th>
+                      <th>Nama Siswa</th>
                       <th>Email</th>
-                      <th>Admission Number</th>
-                      <th>Roll Number</th>
-                      <th>Class</th>
-                      <th>Gender</th>
-                      <th>Date of Birth </th>
-                      <th>Caste </th>
-                      <th>Religion</th>
-                      <th>Mobile Number</th>
-                      <th>Admission Date</th>
-                      <th>Blood Group</th>
-                      <th>Height</th>
-                      <th>Weight</th>
-                      <th>Created Date</th>
+                      <th>Nomor Penerimaan</th>
+                      <th>Nomor Roll</th>
+                      <th>Kelas</th>
+                      <th>Jenis Kelamin</th>
+                      <th>Tanggal Lahir </th>
+                      <th>Kasta </th>
+                      <th>Agama </th>
+                      <th>Nomor HP</th>
+                      <th>Tanggal Penerimaan </th>
+                      <th>Golongan Darah </th>
+                      <th>Tinggi </th>
+                      <th>Berat </th>
+                      <th>Tanggal Dibuat </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -101,7 +101,7 @@
                           <td>{{ $value->height }}</td>
                           <td>{{ $value->weight }}</td>
                           <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-                          
+
                         </tr>
                       @endforeach
                   </tbody>
@@ -119,7 +119,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

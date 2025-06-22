@@ -10,14 +10,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Assign Class Teacher ({{ $getRecord->total() }})</h1>
+            <h1>Menunjuk Guru Kelas ({{ $getRecord->total() }})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-              <a href="{{ url('admin/assign_class_teacher/add') }}" class="btn btn-primary">Add New Assign Class Teacher</a>
+              <a href="{{ url('admin/assign_class_teacher/add') }}" class="btn btn-primary">Tambahkan Guru Kelas Baru</a>
           </div>
 
-         
-          
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -31,27 +31,27 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
 
              <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Assign Class Teacher</h3>
+                <h3 class="card-title">Cari Guru Kelas</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-3">
-                    <label>Class Name</label>
+                    <label>Nama Kelas</label>
                     <input type="text" class="form-control" value="{{ Request::get('class_name') }}" name="class_name"  placeholder="Class Name">
                   </div>
 
                   <div class="form-group col-md-3">
-                    <label>Teacher Name</label>
+                    <label>Nama Guru</label>
                     <input type="text" class="form-control" value="{{ Request::get('teacher_name') }}" name="teacher_name"  placeholder="Teacher Name">
                   </div>
 
@@ -60,19 +60,19 @@
                     <label>Status</label>
                     <select class="form-control" name="status">
                         <option value="">Select</option>
-                        <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
-                        <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
+                        <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Aktif</option>
+                        <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inaktif</option>
                     </select>
                   </div>
-                 
-                 
+
+
                   <div class="form-group col-md-2">
-                    <label>Date</label>
+                    <label>Tanggal</label>
                     <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}" >
                   </div>
 
                   <div class="form-group col-md-2">
-                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
                     <a href="{{ url('admin/assign_class_teacher/list') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
 
                   </div>
@@ -82,15 +82,15 @@
               </form>
             </div>
 
-       
+
 
             @include('_message')
-            
+
             <!-- /.card -->
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Assign Class Teacher List</h3>
+                <h3 class="card-title">Daftar Guru Kelas</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -98,12 +98,12 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Class Name</th>
-                      <th>Teacher Name</th>
+                      <th>Nama Kelas</th>
+                      <th>Nama Guru</th>
                       <th>Status</th>
-                      <th>Created By</th>
-                      <th>Created Date</th>
-                      <th>Action</th>
+                      <th>Dibuat Oleh</th>
+                      <th>Dibuat Tanggal</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -114,9 +114,9 @@
                           <td>{{ $value->teacher_name }} {{ $value->teacher_last_name }}</td>
                           <td>
                             @if($value->status == 0)
-                              Active
+                              Aktif
                             @else
-                              Inactive
+                              Inaktif
                             @endif
                           </td>
                           <td>{{ $value->created_by_name }}</td>
@@ -134,7 +134,7 @@
                   </tbody>
                 </table>
                  <div style="padding: 10px; float: right;">
-                   {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}  
+                   {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                 </div>
 
               </div>
@@ -146,7 +146,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

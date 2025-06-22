@@ -10,14 +10,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Student List (Total : {{ $getRecord->total() }})</h1>
+            <h1>List Siswa (Total : {{ $getRecord->total() }})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-              <a href="{{ url('admin/student/add') }}" class="btn btn-primary">Add New Student</a>
+              <a href="{{ url('admin/student/add') }}" class="btn btn-primary">Tambahkan Siswa Baru</a>
           </div>
 
-         
-          
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -31,27 +31,27 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Student </h3>
+                <h3 class="card-title">Cari Siswa </h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-2">
-                    <label>Name</label>
+                    <label>Nama</label>
                     <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name"  placeholder="Name">
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>Last Name</label>
+                    <label>Nama Akhir</label>
                     <input type="text" class="form-control" value="{{ Request::get('last_name') }}" name="last_name"  placeholder="Last Name">
                   </div>
 
@@ -61,52 +61,52 @@
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>Admission Number</label>
+                    <label>Nomor Pendaftaran</label>
                     <input type="text" class="form-control" name="admission_number" value="{{ Request::get('admission_number') }}"  placeholder="Admission Number">
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>Roll Number</label>
+                    <label>Nomor Urut</label>
                     <input type="text" class="form-control" name="roll_number" value="{{ Request::get('roll_number') }}"  placeholder="Roll Number">
                   </div>
 
 
 
                   <div class="form-group col-md-2">
-                    <label>Class</label>
+                    <label>Kelas</label>
                     <input type="text" class="form-control" name="class" value="{{ Request::get('class') }}"  placeholder="Class">
                   </div>
 
 
                   <div class="form-group col-md-2">
-                    <label>Gender</label>
+                    <label>Jenis Kelamin</label>
                       <select class="form-control" name="gender">
                           <option value="">Select Gender</option>
-                          <option {{ (Request::get('gender') == 'Male') ? 'selected' : '' }} value="Male">Male</option>
-                          <option {{ (Request::get('gender') == 'Female') ? 'selected' : '' }} value="Female">Female</option>
-                          <option {{ (Request::get('gender') == 'Other') ? 'selected' : '' }} value="Other">Other</option>
-                      </select>                    
+                          <option {{ (Request::get('gender') == 'Male') ? 'selected' : '' }} value="Male">Laki-Laki</option>
+                          <option {{ (Request::get('gender') == 'Female') ? 'selected' : '' }} value="Female">Perempuan</option>
+
+                      </select>
                   </div>
 
 
                   <div class="form-group col-md-2">
-                    <label>Caste</label>
+                    <label>Kasta</label>
                     <input type="text" class="form-control" name="caste" value="{{ Request::get('caste') }}"  placeholder="Caste">
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>Religion</label>
+                    <label>Agama</label>
                     <input type="text" class="form-control" name="religion" value="{{ Request::get('religion') }}"  placeholder="Religion">
                   </div>
 
                     <div class="form-group col-md-2">
-                    <label>Mobile Number</label>
+                    <label>Nomor HP</label>
                     <input type="text" class="form-control" name="mobile_number" value="{{ Request::get('mobile_number') }}"  placeholder="Mobile Number">
                   </div>
 
 
                     <div class="form-group col-md-2">
-                    <label>Blood Group</label>
+                    <label>Golongan Darah</label>
                     <input type="text" class="form-control" name="blood_group" value="{{ Request::get('blood_group') }}"  placeholder="Blood Group">
                   </div>
 
@@ -115,33 +115,33 @@
                     <label>Status</label>
                       <select class="form-control" name="status">
                           <option value="">Select Status</option>
-                          <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
-                          <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
-                          
-                      </select>                    
+                          <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Aktif</option>
+                          <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inaktif</option>
+
+                      </select>
                   </div>
 
 
-                  
 
-                    
+
+
                     <div class="form-group col-md-2">
-                    <label>Admission Date</label>
+                    <label>Tanggal Penerimaan</label>
                     <input type="date" class="form-control" name="admission_date" value="{{ Request::get('admission_date') }}" >
                   </div>
-                  
 
-                  
 
-                  
+
+
+
 
                   <div class="form-group col-md-2">
-                    <label>Created Date</label>
+                    <label>Tanggal Dibuat</label>
                     <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}"  placeholder="">
                   </div>
 
                   <div class="form-group col-md-3">
-                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
                     <a href="{{ url('admin/student/list') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
 
                   </div>
@@ -150,18 +150,18 @@
                 </div>
               </form>
             </div>
-          
-         
-         
+
+
+
 
 
             @include('_message')
-            
+
             <!-- /.card -->
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Student List</h3>
+                <h3 class="card-title">List Siswa</h3>
                 <form action="{{ url('admin/student/export_excel') }}" method="post" style="float: right;">
                     {{ csrf_field() }}
                     <input type="hidden" name="name" value="{{ Request::get('name') }}">
@@ -187,25 +187,25 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Profile Pic</th>
-                      <th>Student Name</th>
-                      <th>Parent Name</th>
+                      <th>Foto Profil</th>
+                      <th>Nama Siswa</th>
+                      <th>Nama Orang Tua</th>
                       <th>Email</th>
-                      <th>Admission Number</th>
-                      <th>Roll Number</th>
-                      <th>Class</th>
-                      <th>Gender</th>
-                      <th>Date of Birth </th>
-                      <th>Caste </th>
-                      <th>Religion</th>
-                      <th>Mobile Number</th>
-                      <th>Admission Date</th>
-                      <th>Blood Group</th>
-                      <th>Height</th>
-                      <th>Weight</th>
+                      <th>Nomor Pendaftaran</th>
+                      <th>Nomor Urut</th>
+                      <th>Kelas</th>
+                      <th>Jenis Kelamin</th>
+                      <th>Tanggal Kelahiran </th>
+                      <th>Kasta </th>
+                      <th>Agama</th>
+                      <th>Nomor HP</th>
+                      <th>Tanggal Penerimaan</th>
+                      <th>Golongan Darah</th>
+                      <th>Tinggi</th>
+                      <th>Berat</th>
                       <th>Status</th>
-                      <th>Created Date</th>
-                      <th>Action</th>
+                      <th>Tanggal Dibuat</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -242,7 +242,7 @@
                           <td>{{ $value->height }}</td>
                           <td>{{ $value->weight }}</td>
                           <td>{{ ($value->status == 0) ? 'Active' : 'Inactive' }}</td>
-                          
+
 
                           <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                           <td style="min-width: 270px;">
@@ -267,7 +267,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

@@ -10,7 +10,7 @@
 
                 @if(!empty($value->getFile()))
                 <div>
-                    <a href="{{ $value->getFile() }}" download="" target="_blank">Attachment</a>
+                    <a href="{{ $value->getFile() }}" download="" target="_blank">Lampiran</a>
                 </div>
                 @endif
 
@@ -25,14 +25,14 @@
             </div>
             <div class="message my-message">
                 {!! nl2br($value->message) !!}
-                
+
                 @if(!empty($value->getFile()))
                 <div>
-                    <a href="{{ $value->getFile() }}" download="" target="_blank">Attachment</a>
+                    <a href="{{ $value->getFile() }}" download="" target="_blank">Lampiran</a>
                 </div>
                 @endif
             </div>
-            
+
         </li>
     @endif
 @endforeach

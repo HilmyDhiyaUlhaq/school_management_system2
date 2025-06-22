@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Exam Schedule</h1>
+            <h1>Jadwal Ujian</h1>
           </div>
-          
 
-         
-          
+
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -29,44 +29,44 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
 
-          
+
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Exam Schedule</h3>
+                <h3 class="card-title">Cari Jadwal Ujian</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-3">
-                    <label>Exam</label>
+                    <label>Ujian</label>
                     <select class="form-control" name="exam_id" required>
-                        <option value="">Select</option>     
-                        @foreach($getExam as $exam)                                         
+                        <option value="">Pilih</option>
+                        @foreach($getExam as $exam)
                           <option {{ (Request::get('exam_id') == $exam->id) ? 'selected' : '' }} value="{{ $exam->id }}">{{ $exam->name }}</option>
                         @endforeach
                     </select>
                   </div>
 
                   <div class="form-group col-md-3">
-                    <label>Class</label>
+                    <label>Kelas</label>
                     <select class="form-control" name="class_id" required>
-                        <option value="">Select</option>                                              
-                        @foreach($getClass as $class)                                         
+                        <option value="">Pilih</option>
+                        @foreach($getClass as $class)
                           <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
                         @endforeach
                     </select>
                   </div>
-          
+
 
                   <div class="form-group col-md-3">
-                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
                     <a href="{{ url('admin/examinations/exam_schedule') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
 
                   </div>
@@ -75,11 +75,11 @@
                 </div>
               </form>
             </div>
-         
+
 
 
             @include('_message')
-            
+
             <!-- /.card -->
             @if(!empty($getRecord))
 
@@ -98,13 +98,13 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Subject Name</th>
-                      <th>Exam Date</th>
-                      <th>Start Time </th>
-                      <th>End Time </th>
-                      <th>Room Number</th>
-                      <th>Full Marks </th>                      
-                      <th>Passing Marks </th>                      
+                      <th>Nama Mata Pelajaran</th>
+                      <th>Tanggal Ujian</th>
+                      <th>Waktu Mulai</th>
+                      <th>Waktu Selesai</th>
+                      <th>Nomor Ruangan</th>
+                      <th>Nilai Penuh</th>
+                      <th>Nilai Lulus</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -142,7 +142,7 @@
                     @endforeach
                   </tbody>
                 </table>
-                
+
 
                 <div style="text-align: center; padding: 20px;">
                    <button class="btn btn-primary">Submit</button>
@@ -150,7 +150,7 @@
 
               </div>
 
-              
+
             </div>
           </form>
             @endif
@@ -161,7 +161,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

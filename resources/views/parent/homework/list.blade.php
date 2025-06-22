@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>Student Homework  <span style="color:blue;">({{ $getStudent->name }} {{ $getStudent->last_name }})</span></h1>
+            <h1>PR Siswa <span style="color:blue;">({{ $getStudent->name }} {{ $getStudent->last_name }})</span></h1>
           </div>
         </div>
       </div>
@@ -14,58 +14,56 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-
-
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Student Homework</h3>
+                <h3 class="card-title">Cari PR Siswa</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-              
+
+
 
                   <div class="form-group col-md-2">
-                    <label>Subject</label>
+                    <label>Mata Pelajaran</label>
                     <input type="text" class="form-control" value="{{ Request::get('subject_name') }}" name="subject_name"  placeholder="Subject Name">
                   </div>
 
-            
+
 
                   <div class="form-group col-md-2">
-                    <label>From Homework Date</label>
+                    <label>Dari Tanggal PR</label>
                     <input type="date" class="form-control" name="from_homework_date" value="{{ Request::get('from_homework_date') }}"  >
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>To Homework Date</label>
+                    <label>Ke Tanggal Pekerjaan Rumah</label>
                     <input type="date" class="form-control" name="to_homework_date" value="{{ Request::get('to_homework_date') }}"  >
                   </div>
 
 
                    <div class="form-group col-md-2">
-                    <label>From Submission Date</label>
+                    <label>Dari Tanggal Pengajuan</label>
                     <input type="date" class="form-control" name="from_submission_date" value="{{ Request::get('from_submission_date') }}"  >
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>To Submission Date</label>
+                    <label>Ke Tanggal Pengajuan</label>
                     <input type="date" class="form-control" name="to_submission_date" value="{{ Request::get('to_submission_date') }}"  >
                   </div>
 
 
                     <div class="form-group col-md-2">
-                    <label>From Created Date</label>
+                    <label>Dari Tanggal Dibuat</label>
                     <input type="date" class="form-control" name="from_created_date" value="{{ Request::get('from_created_date') }}"  >
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>To Created Date</label>
+                    <label>Ke Tanggal Dibuat</label>
                     <input type="date" class="form-control" name="to_created_date" value="{{ Request::get('to_created_date') }}"  >
                   </div>
 
-                   
+
 
                   <div class="form-group col-md-3">
                     <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
@@ -82,21 +80,21 @@
             @include('_message')
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Student Homework List</h3>
+                <h3 class="card-title">List PR Siswa</h3>
               </div>
               <div class="card-body p-0">
                 <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Class</th>
-                      <th>Subject</th>
-                      <th>Homework Date</th>
-                      <th>Submission Date</th>
-                      <th>Document</th>
-                      <th>Description</th>
-                      <th>Created By</th>
-                      <th>Created Date</th>
+                      <th>Kelas</th>
+                      <th>Mata Pelajaran</th>
+                      <th>Tanggal PR</th>
+                      <th>Tanggal Pengumpulan</th>
+                      <th>Dokumen</th>
+                      <th>Deskripsi</th>
+                      <th>Dibuat Oleh</th>
+                      <th>Tanggal Dibuat</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -117,11 +115,11 @@
                           </td>
                           <td>{{ $value->created_by_name }}</td>
                           <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
-                          
+
                         </tr>
                       @empty
                       <tr>
-                        <td colspan="100%">Record not found</td>
+                        <td colspan="100%">Data Tidak Ditemukan</td>
                       </tr>
                       @endforelse
 

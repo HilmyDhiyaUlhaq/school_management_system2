@@ -8,9 +8,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Class</h1>
+            <h1>Edit Kelas</h1>
           </div>
-    
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -26,25 +26,25 @@
                  {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Class Name</label>
+                    <label>Nama Kelas</label>
                     <input type="text" class="form-control" value="{{ $getRecord->name }}" name="name" required placeholder="Class Name">
                   </div>
 
                   <div class="form-group">
-                    <label>Amount ($)</label>
+                    <label>Jumlah ($)</label>
                     <input type="number" class="form-control" name="amount" value="{{ $getRecord->amount }}" required placeholder="Amount">
                   </div>
 
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status">
-                        <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Active</option>
-                        <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inactive</option>
+                        <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Aktif</option>
+                        <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inaktif</option>
                     </select>
-                    
+
                   </div>
-              
-                
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -53,12 +53,12 @@
                 </div>
               </form>
             </div>
-         
+
 
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

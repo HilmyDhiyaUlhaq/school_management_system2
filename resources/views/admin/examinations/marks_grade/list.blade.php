@@ -10,14 +10,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Marks Grade</h1>
+            <h1>Menandai Nilai</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-              <a href="{{ url('admin/examinations/marks_grade/add') }}" class="btn btn-primary">Add New Marks Grade</a>
+              <a href="{{ url('admin/examinations/marks_grade/add') }}" class="btn btn-primary">Tambahkan Nilai Baru</a>
           </div>
 
-         
-          
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -31,7 +31,7 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
@@ -39,28 +39,28 @@
 
 
             @include('_message')
-            
-          
+
+
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Marks Grade List</h3>
+                <h3 class="card-title">Daftar Nilai</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Grade Name</th>
-                      <th>Percent From</th>
-                      <th>Percent To</th>
-                      <th>Created By</th>
-                      <th>Created Date</th>
-                      <th>Action</th>
+                      <th>Nama Nilai</th>
+                      <th>Persen Dari</th>
+                      <th>Persen Ke</th>
+                      <th>Dibuat Oleh</th>
+                      <th>Tanggal Pembuatan</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                        @foreach($getRecord as $value)
-                        <tr>                    
+                        <tr>
                           <td>{{ $value->name }}</td>
                           <td>{{ $value->percent_from }}</td>
                           <td>{{ $value->percent_to }}</td>
@@ -74,7 +74,7 @@
                       @endforeach
                   </tbody>
                 </table>
-               
+
 
               </div>
 
@@ -85,7 +85,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

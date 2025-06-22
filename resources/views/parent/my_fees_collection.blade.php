@@ -9,11 +9,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Fees Collection <span style="color: blue;">({{ $getStudent->name }} {{ $getStudent->last_name }})</span> </h1>
+            <h1>Pengumpulan Biaya <span style="color: blue;">({{ $getStudent->name }} {{ $getStudent->last_name }})</span> </h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-            <button type="button" class="btn btn-primary" id="AddFees">Add Fees</button>
-          </div>              
+            <button type="button" class="btn btn-primary" id="AddFees">Menambahkan Biaya</button>
+          </div>
         </div>
       </div>
     </section>
@@ -22,24 +22,24 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-             @include('_message')          
+             @include('_message')
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Payment Detail</h3>
+                <h3 class="card-title">Detail Pembayaran</h3>
               </div>
-              
+
               <div class="card-body p-0">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Class Name</th>
-                      <th>Total Amount</th>
-                      <th>Paid Amount</th>
-                      <th>Remaning Amount</th>
-                      <th>Payment Type</th>
-                      <th>Remark</th>
-                      <th>Created By</th>
-                      <th>Created Date</th>
+                      <th>Nama Kelas</th>
+                      <th>Jumlah Total</th>
+                      <th>Jumlah Terbayar</th>
+                      <th>Jumlah Tersisa</th>
+                      <th>Tipe Pembayaran</th>
+                      <th>Komentar</th>
+                      <th>Dibuat Oleh </th>
+                      <th>Dibuat TAnggal </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -56,21 +56,21 @@
                       </tr>
                      @empty
                       <tr>
-                        <td colspan="100%">Record not found.</td>
+                        <td colspan="100%">Data Tidak Ditemukan.</td>
                       </tr>
                      @endforelse
                   </tbody>
                 </table>
-                
+
               </div>
 
-             
+
             </div>
-            
+
           </div>
-          
+
         </div>
-        
+
       </div>
     </section>
 
@@ -81,7 +81,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Fees</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Menambahkan Biaya</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -90,42 +90,42 @@
          {{ csrf_field() }}
       <div class="modal-body">
           <div class="form-group">
-            <label class="col-form-label">Class Name : {{ $getStudent->class_name }}</label>
+            <label class="col-form-label">Nama Kelas : {{ $getStudent->class_name }}</label>
           </div>
           <div class="form-group">
-            <label class="col-form-label">Total Amount : ${{ number_format($getStudent->amount, 2) }}</label>            
+            <label class="col-form-label">Jumlah Total : ${{ number_format($getStudent->amount, 2) }}</label>
           </div>
 
           <div class="form-group">
-            <label class="col-form-label">Paid Amount : ${{ number_format($paid_amount, 2) }}</label>            
+            <label class="col-form-label">Jumlah Terbayar : ${{ number_format($paid_amount, 2) }}</label>
           </div>
 
           <div class="form-group">
             @php
               $RemaningAmount = $getStudent->amount - $paid_amount;
             @endphp
-            <label class="col-form-label">Remaning Amount : ${{ number_format($RemaningAmount, 2) }}</label>            
+            <label class="col-form-label">Jumlah Tersisa : ${{ number_format($RemaningAmount, 2) }}</label>
           </div>
 
           <div class="form-group">
-            <label class="col-form-label">Amount <span style="color:red;">*</span></label>
+            <label class="col-form-label">Jumlah <span style="color:red;">*</span></label>
             <input type="number" class="form-control" name="amount">
           </div>
 
           <div class="form-group">
-            <label class="col-form-label">Payment Type <span style="color:red;">*</span></label>
+            <label class="col-form-label">Tipe Pembayaran <span style="color:red;">*</span></label>
             <select class="form-control" name="payment_type" required>
-                  <option value="">Select</option>
+                  <option value="">Pilih</option>
                   <option value="Paypal">Paypal</option>
                   <option value="Stripe">Stripe</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label class="col-form-label">Remark </label>
+            <label class="col-form-label">Komentar </label>
             <textarea class="form-control" name="remark" ></textarea>
           </div>
-       
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

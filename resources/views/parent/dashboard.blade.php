@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    
+
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -22,7 +22,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>${{ number_format($TotalPaidAmount, 2) }}</h3>
-                <p>Total Paid Amount</p>
+                <p>Total Jumlah Yang Dibayarkan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -31,15 +31,15 @@
             </div>
           </div>
 
-       
-   
-          
+
+
+
           <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>{{ $TotalStudent }}</h3>
 
-                <p>Total Student</p>
+                <p>Total Siswa</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -53,7 +53,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3>{{ $TotalNoticeBoard }}</h3>
-                <p>Notice Board</p>
+                <p>Papan Pengumuman</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -66,7 +66,7 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>{{ $TotalAttendance  }}</h3>
-                <p>Total Attendance</p>
+                <p>Total Kehadiran</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -75,12 +75,12 @@
             </div>
           </div>
 
-       
+
           <div class="col-lg-3 col-6">
             <div class="small-box bg-primary">
               <div class="inner">
                 <h3>{{ $TotalSubmittedHomework }}</h3>
-                <p>Total Submitted Homework</p>
+                <p>Total Pekerjaan Rumah yang Dikumpulkan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -90,11 +90,11 @@
           </div>
 
 
-          
-         
+
+
         </div>
-   
-       
+
+
       </div>
     </section>
   </div>

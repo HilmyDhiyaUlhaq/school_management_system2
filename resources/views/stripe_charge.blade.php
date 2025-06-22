@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stripe Checkout</title>
+	<title>Pembayaran Stripe</title>
 </head>
 <body>
 <script src="https://js.stripe.com/v3"></script>

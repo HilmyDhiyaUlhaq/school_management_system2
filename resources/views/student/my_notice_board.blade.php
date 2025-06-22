@@ -7,13 +7,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>My Notice Board</h1>
-          </div>         
+            <h1>Papan Pengumuman Saya</h1>
+          </div>
         </div>
       </div>
     </section>
 
-    
+
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -21,24 +21,24 @@
 
            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Notice Board</h3>
+                <h3 class="card-title">Cari Papan Pengumuman Saya</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-3">
-                    <label>Title</label>
+                    <label>Judul</label>
                     <input type="text" class="form-control" value="{{ Request::get('title') }}" name="title"  placeholder="Title">
                   </div>
                   <div class="form-group col-md-3">
-                    <label>Notice Date From</label>
+                    <label>Tanggal Pemberitahuan Dari</label>
                     <input type="date" class="form-control" name="notice_date_from" value="{{ Request::get('notice_date_from') }}"  >
                   </div>
 
                   <div class="form-group col-md-3">
-                    <label>Notice Date To</label>
+                    <label>Tanggal Pemberitahuan Ke</label>
                     <input type="date" class="form-control" name="notice_date_to" value="{{ Request::get('notice_date_to') }}"  >
                   </div>
                   <div class="form-group col-md-3">
@@ -53,7 +53,7 @@
               </form>
             </div>
 
-          </div> 
+          </div>
 
        @foreach($getRecord as $value)
         <div class="col-md-12">
@@ -66,9 +66,9 @@
               <div class="mailbox-read-message">
                   {!! $value->message !!}
               </div>
-           
+
             </div>
-           
+
           </div>
         </div>
        @endforeach
@@ -86,7 +86,7 @@
 
       </div>
     </section>
-    
+
  </div>
 
 @endsection

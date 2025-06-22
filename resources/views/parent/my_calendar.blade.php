@@ -17,9 +17,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>My Calendar <span style="color: blue;">( {{ $getStudent->name }} {{ $getStudent->last_name }} )</span></h1>
+            <h1>Kalender Saya <span style="color: blue;">( {{ $getStudent->name }} {{ $getStudent->last_name }} )</span></h1>
           </div>
-    
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -47,10 +47,10 @@
    @foreach($getMyTimetable as $value)
         @foreach($value['week'] as $week)
            events.push({
-                  title: '{{ $value['name'] }}', 
+                  title: '{{ $value['name'] }}',
                   daysOfWeek: [ {{ $week['fullcalendar_day'] }} ],
                   startTime: '{{ $week['start_time'] }}',
-                  endTime: '{{ $week['end_time'] }}',                        
+                  endTime: '{{ $week['end_time'] }}',
             });
         @endforeach
     @endforeach
@@ -59,7 +59,7 @@
     @foreach($getExamTimetable as $valueE)
         @foreach($valueE['exam'] as $exam)
             events.push({
-                  title: '{{ $valueE['name'] }} - {{ $exam['subject_name'] }} ({{ date('h:i A',strtotime($exam['start_time'])) }} to {{ date('h:i A',strtotime($exam['end_time'])) }})', 
+                  title: '{{ $valueE['name'] }} - {{ $exam['subject_name'] }} ({{ date('h:i A',strtotime($exam['start_time'])) }} to {{ date('h:i A',strtotime($exam['end_time'])) }})',
                   start: '{{ $exam['exam_date'] }}',
                   end: '{{ $exam['exam_date'] }}',
                   color: 'red'

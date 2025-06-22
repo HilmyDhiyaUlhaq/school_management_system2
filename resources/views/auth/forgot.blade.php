@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forgot Password</title>
+  <title>Lupa Password</title>
    @php
     $getHeaderSetting = App\Models\SettingModel::getSingle();
   @endphp
@@ -23,12 +23,12 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="" class="h1"><b>Forgot Password</b></a>
+      <a href="" class="h1"><b>Lupa Password</b></a>
     </div>
     <div class="card-body">
-     
+
       @include('_message')
-      
+
       <form action="" method="post">
         {{ csrf_field() }}
         <div class="input-group mb-3">
@@ -39,24 +39,24 @@
             </div>
           </div>
         </div>
-        
+
         <div class="row">
-          
+
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Forgot</button>
+            <button type="submit" class="btn btn-primary btn-block">Lupa</button>
           </div>
-          
+
         </div>
       </form>
 
-    
+
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
         <br />
         <a href="{{ url('') }}">Login</a>
       </p>
-    
+
     </div>
     <!-- /.card-body -->
   </div>

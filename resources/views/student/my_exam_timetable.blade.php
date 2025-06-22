@@ -10,9 +10,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>My Exam Timetable</h1>
+            <h1>Jadwal Ujian Saya</h1>
           </div>
-      
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -21,12 +21,12 @@
     <section class="content">
      <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
              @include('_message')
-          
+
              @foreach($getRecord as $value)
               <div class="card">
               <div class="card-header">
@@ -37,14 +37,14 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Subject Name</th>
-                      <th>Day</th>
-                      <th>Exam Date</th>
-                      <th>Start Time </th>
-                      <th>End Time </th>
-                      <th>Room Number</th>
-                      <th>Full Marks </th>                      
-                      <th>Passing Marks </th>
+                      <th>Nama Mata Pelajaran</th>
+                      <th>Hari</th>
+                      <th>Tanggal Ujian</th>
+                      <th>Waktu Mulai </th>
+                      <th>Waktu Berakhir </th>
+                      <th>Nomor Kamar </th>
+                      <th>Nilai Penuh </th>
+                      <th>Nilai Kelulusan </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -54,7 +54,7 @@
                           <td>{{ date('l', strtotime($valueS['exam_date'])) }}</td>
                           <td>{{ date('d-m-Y', strtotime($valueS['exam_date'])) }}</td>
                           <td>{{ date('h:i A', strtotime($valueS['start_time'])) }}</td>
-                          <td>{{ date('h:i A', strtotime($valueS['end_time'])) }}</td>                          
+                          <td>{{ date('h:i A', strtotime($valueS['end_time'])) }}</td>
                           <td>{{ $valueS['room_number'] }}</td>
                           <td>{{ $valueS['full_marks'] }}</td>
                           <td>{{ $valueS['passing_mark'] }}</td>
@@ -75,7 +75,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

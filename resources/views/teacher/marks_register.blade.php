@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Marks Register</h1>
+            <h1>Daftar Nilai</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -16,38 +16,38 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Marks Register</h3>
+                <h3 class="card-title">Cari Daftar Nilai</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-3">
-                    <label>Exam</label>
+                    <label>Ujian</label>
                     <select class="form-control" name="exam_id" required>
-                        <option value="">Select</option>     
-                        @foreach($getExam as $exam)                                         
+                        <option value="">Select</option>
+                        @foreach($getExam as $exam)
                           <option {{ (Request::get('exam_id') == $exam->exam_id) ? 'selected' : '' }} value="{{ $exam->exam_id }}">{{ $exam->exam_name }}</option>
                         @endforeach
                     </select>
                   </div>
 
                   <div class="form-group col-md-3">
-                    <label>Class</label>
+                    <label>Kelas</label>
                     <select class="form-control" name="class_id" required>
-                        <option value="">Select</option>                                              
-                        @foreach($getClass as $class)                                         
+                        <option value="">Select</option>
+                        @foreach($getClass as $class)
                           <option {{ (Request::get('class_id') == $class->class_id) ? 'selected' : '' }} value="{{ $class->class_id }}">{{ $class->class_name }}</option>
                         @endforeach
                     </select>
                   </div>
-          
+
 
                   <div class="form-group col-md-3">
                     <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
@@ -59,30 +59,30 @@
                 </div>
               </form>
             </div>
-         
+
 
 
             @include('_message')
-            
+
 
           @if(!empty($getSubject) && !empty($getSubject->count()))
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Marks Register</h3>
+                <h3 class="card-title">Daftar Nilai</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0" style="overflow: auto;">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>STUDENT NAME</th>
+                      <th>NAMA SISWA</th>
                       @foreach($getSubject as $subject)
                       <th>
                         {{ $subject->subject_name }}  <br />
                         ({{ $subject->subject_type }} : {{ $subject->passing_mark }} / {{ $subject->full_marks }})
                       </th>
                       @endforeach
-                      <th>ACTION</th>                      
+                      <th>AKSI</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -93,7 +93,7 @@
                               <input type="hidden" name="student_id" value="{{ $student->id }}">
                               <input type="hidden" name="exam_id" value="{{ Request::get('exam_id') }}">
                               <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}">
-                              
+
                             <tr>
                               <td>{{ $student->name }} {{ $student->last_name }}</td>
                               @php
@@ -101,7 +101,7 @@
                               $totalStudentMark = 0;
                               $totalFullMarks = 0;
                               $totalPassingMark = 0;
-                              $pass_fail_vali = 0; 
+                              $pass_fail_vali = 0;
                               @endphp
                               @foreach($getSubject as $subject)
 
@@ -109,7 +109,7 @@
                                     $totalMark = 0;
                                     $totalFullMarks = $totalFullMarks + $subject->full_marks;
                                     $totalPassingMark = $totalPassingMark + $subject->passing_mark;
-                                    
+
 
                                     $getMark = $subject->getMark($student->id, Request::get('exam_id'), Request::get('class_id'), $subject->subject_id);
 
@@ -123,8 +123,8 @@
 
                                 <td>
                                   <div style="margin-bottom: 10px;">
-                                      Class Work
-                                      
+                                      Kerja Kelas
+
                                       <input type="hidden" name="mark[{{ $i }}][full_marks]" value="{{ $subject->full_marks }}">
                                       <input type="hidden" name="mark[{{ $i }}][passing_mark]" value="{{ $subject->passing_mark }}">
 
@@ -133,17 +133,17 @@
                                       <input type="text" name="mark[{{ $i }}][class_work]" id="class_work_{{ $student->id }}{{ $subject->subject_id }}" style="width:200px;" placeholder="Enter Marks" value="{{ !empty($getMark->class_work) ? $getMark->class_work : ''  }}" class="form-control">
                                   </div>
                                   <div style="margin-bottom: 10px;">
-                                      Home Work
+                                      Kerja Rumah
                                       <input type="text" id="home_work_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][home_work]" style="width:200px;" placeholder="Enter Marks" value="{{ !empty($getMark->home_work) ? $getMark->home_work : ''  }}" class="form-control">
                                   </div>
 
                                   <div style="margin-bottom: 10px;">
-                                      Test Work
+                                      Kerja Ujian
                                       <input type="text" id="test_work_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][test_work]" style="width:200px;" placeholder="Enter Marks" value="{{ !empty($getMark->test_work) ? $getMark->test_work : ''  }}" class="form-control">
                                   </div>
 
                                   <div style="margin-bottom: 10px;">
-                                      Exam
+                                      Ujian
                                       <input type="text" id="exam_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][exam]" style="width:200px;" placeholder="Enter Marks" class="form-control" value="{{ !empty($getMark->exam) ? $getMark->exam : ''  }}">
                                   </div>
 
@@ -158,22 +158,22 @@
                                           $getLoopGrade = App\Models\MarksGradeModel::getGrade($totalMark);
                                       @endphp
 
-                                      <b>Total Mark :</b> {{ $totalMark }} <br />
-                                      <b>Passing Mark :</b> {{ $subject->passing_mark }} <br >
+                                      <b>Nilai Total :</b> {{ $totalMark }} <br />
+                                      <b>Nilai Kelulusan :</b> {{ $subject->passing_mark }} <br >
                                       @if(!empty($getLoopGrade))
-                                         <b>Grade :</b> {{ $getLoopGrade }} <br >
+                                         <b>Nilai :</b> {{ $getLoopGrade }} <br >
                                       @endif
                                       @if($totalMark >= $subject->passing_mark)
-                                        Result : <span style="color:green; font-weight: bold;">Pass</span>
+                                        Hasil : <span style="color:green; font-weight: bold;">Pass</span>
                                       @else
-                                        Result : <span style="color:red; font-weight: bold;">Fail</span>
+                                        Hasil : <span style="color:red; font-weight: bold;">Fail</span>
                                         @php
                                           $pass_fail_vali = 1;
                                         @endphp
                                       @endif
                                     </div>
                                   @endif
-                                    
+
 
                                 </td>
                               @php
@@ -188,27 +188,27 @@
                                 @if(!empty($totalStudentMark))
                                     <br >
                                     <br >
-                                    <b>Total Subject Mark :</b> {{ $totalFullMarks }} 
+                                    <b>Jumlah Nilai Mata Pelajaran :</b> {{ $totalFullMarks }}
                                     <br >
-                                    <b>Total Passing Mark :</b> {{ $totalPassingMark }} 
+                                    <b>Nilai Kelulusan Total:</b> {{ $totalPassingMark }}
                                     <br />
-                                    <b>Total Student Mark :</b> {{ $totalStudentMark }} 
+                                    <b>Total Nilai Siswa :</b> {{ $totalStudentMark }}
                                     <br />
                                     @php
                                       $percentage = ($totalStudentMark * 100) / $totalFullMarks;
                                       $getGrade = App\Models\MarksGradeModel::getGrade($percentage);
                                     @endphp
                                     <br>
-                                    <b>Percentage :</b> {{ round($percentage,2) }}%
+                                    <b>Persentase :</b> {{ round($percentage,2) }}%
                                     <br>
                                      @if(!empty($getGrade))
-                                    <b>Grade :</b> {{ $getGrade }}
+                                    <b>Nilai :</b> {{ $getGrade }}
                                     <br>
                                     @endif
                                     @if($pass_fail_vali == 0)
-                                      Result : <span style="color:green; font-weight: bold;">Pass</span>
+                                      Hasil : <span style="color:green; font-weight: bold;">Lulus</span>
                                     @else
-                                      Result : <span style="color:red; font-weight: bold;">Fail</span>
+                                      Hasil : <span style="color:red; font-weight: bold;">Gagal</span>
                                     @endif
                                 @endif
                               </td>
@@ -221,7 +221,7 @@
               </div>
             </div>
           @endif
-         
+
 
 
             <!-- /.card -->
@@ -229,7 +229,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
@@ -261,7 +261,7 @@
     var exam_id = $(this).attr('data-exam');
     var class_id = $(this).attr('data-class');
     var id = $(this).attr('data-schedule');
-    
+
     var class_work = $('#class_work_'+student_id+subject_id).val();
     var home_work = $('#home_work_'+student_id+subject_id).val();
     var test_work = $('#test_work_'+student_id+subject_id).val();
@@ -290,7 +290,7 @@
       });
 
   });
-  
+
 </script>
 
 @endsection

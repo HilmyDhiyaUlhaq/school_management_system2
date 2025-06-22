@@ -8,9 +8,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add New Marks Grade</h1>
+            <h1>Tambahkan Nilai Baru</h1>
           </div>
-    
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -26,24 +26,24 @@
                  {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Grade Name</label>
+                    <label>Nama Kelas</label>
                     <input type="text" class="form-control" value="{{ old('name') }}" name="name" required placeholder="Grade Name">
                   </div>
-                  
+
 
                   <div class="form-group">
-                    <label>Percent From</label>
+                    <label>Persen Dari</label>
                     <input type="number" class="form-control" value="{{ old('percent_from') }}" name="percent_from" required placeholder="">
                   </div>
 
 
                   <div class="form-group">
-                    <label>Percent To</label>
+                    <label>Persen Kepada</label>
                     <input type="number" class="form-control" value="{{ old('percent_to') }}" name="percent_to" required placeholder="">
                   </div>
-                 
-               
-                
+
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -52,12 +52,12 @@
                 </div>
               </form>
             </div>
-         
+
 
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

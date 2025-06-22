@@ -10,14 +10,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Class List</h1>
+            <h1>List Kelas</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-              <a href="{{ url('admin/class/add') }}" class="btn btn-primary">Add New Class</a>
+              <a href="{{ url('admin/class/add') }}" class="btn btn-primary">Tambahkan Kelas Baru</a>
           </div>
 
-         
-          
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -31,28 +31,28 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
 
-          
+
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Class</h3>
+                <h3 class="card-title">Cari Kelas</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-3">
-                    <label>Name</label>
+                    <label>Nama</label>
                     <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name"  placeholder="Name">
                   </div>
-                 
+
                   <div class="form-group col-md-3">
-                    <label>Date</label>
+                    <label>Tanggal</label>
                     <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}"  placeholder="Email">
                   </div>
 
@@ -66,16 +66,16 @@
                 </div>
               </form>
             </div>
-         
+
 
 
             @include('_message')
-            
+
             <!-- /.card -->
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Class List</h3>
+                <h3 class="card-title">List Kelas</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -83,12 +83,12 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Name</th>
-                      <th>Amount</th>
+                      <th>Nama</th>
+                      <th>Jumlah</th>
                       <th>Status</th>
-                      <th>Created By</th>
-                      <th>Created Date</th>
-                      <th>Action</th>
+                      <th>Dibuat Oleh</th>
+                      <th>Tanggal Dibuat</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -99,9 +99,9 @@
                           <td>${{ number_format($value->amount, 2) }}</td>
                           <td>
                             @if($value->status == 0)
-                              Active
+                              Aktif
                             @else
-                              Inactive
+                              Inaktif
                             @endif
                           </td>
                           <td>{{ $value->created_by_name }}</td>
@@ -128,7 +128,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

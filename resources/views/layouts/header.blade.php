@@ -32,7 +32,7 @@
       @if(!empty($getHeaderSetting->getLogo()))
        <img src="{{ $getHeaderSetting->getLogo() }}" style="width: auto;height: 60px;border-radius: 5px;">
       @else
-        <span class="brand-text font-weight-light" style="font-weight: bold !important;font-size: 20px;">School</span>
+        <span class="brand-text font-weight-light" style="font-weight: bold !important;font-size: 20px;">Sekolah</span>
       @endif
     </a>
 
@@ -78,7 +78,7 @@
         <a href="{{ url('admin/teacher/list') }}" class="nav-link @if(Request::segment(2) == 'teacher') active @endif">
           <i class="nav-icon fas fa-chalkboard-teacher"></i>
           <p>
-            Teacher
+            Guru
           </p>
         </a>
       </li>
@@ -87,7 +87,7 @@
         <a href="{{ url('admin/student/list') }}" class="nav-link @if(Request::segment(2) == 'student') active @endif">
           <i class="nav-icon fas fa-user-graduate"></i>
           <p>
-            Student
+            Siswa
           </p>
         </a>
       </li>
@@ -96,7 +96,7 @@
         <a href="{{ url('admin/parent/list') }}" class="nav-link @if(Request::segment(2) == 'parent') active @endif">
           <i class="nav-icon fas fa-user-friends"></i>
           <p>
-            Parent
+            Orang Tua
           </p>
         </a>
       </li>
@@ -105,7 +105,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'class' || Request::segment(2) == 'subject' || Request::segment(2) == 'assign_subject' || Request::segment(2) == 'assign_class_teacher' || Request::segment(2) == 'class_timetable') active @endif">
           <i class="nav-icon fas fa-book-open"></i>
           <p>
-            Academics
+            Akademis
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -113,33 +113,33 @@
           <li class="nav-item">
             <a href="{{ url('admin/class/list') }}" class="nav-link @if(Request::segment(2) == 'class') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Class</p>
+              <p>Kelas</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ url('admin/subject/list') }}" class="nav-link @if(Request::segment(2) == 'subject') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Subject</p>
+              <p>Mata Pelajaran</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ url('admin/assign_subject/list') }}" class="nav-link @if(Request::segment(2) == 'assign_subject') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Assign Subject</p>
+              <p>Menetapkan Subjek</p>
             </a>
           </li>
 
            <li class="nav-item">
             <a href="{{ url('admin/class_timetable/list') }}" class="nav-link @if(Request::segment(2) == 'class_timetable') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Class Timetable</p>
+              <p>Jadwal Kelas</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{ url('admin/assign_class_teacher/list') }}" class="nav-link @if(Request::segment(2) == 'assign_class_teacher') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Assign Class Teacher</p>
+              <p>Menugaskan Guru Kelas</p>
             </a>
           </li>
         </ul>
@@ -149,7 +149,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'fees_collection') active @endif">
           <i class="nav-icon fas fa-money-bill-wave"></i>
           <p>
-            Fees Collection
+            Pengumpulan Biaya
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -157,14 +157,14 @@
           <li class="nav-item">
             <a href="{{ url('admin/fees_collection/collect_fees') }}" class="nav-link @if(Request::segment(3) == 'collect_fees') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Collect Fees</p>
+              <p>Mengumpulkan Biaya</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{ url('admin/fees_collection/collect_fees_report') }}" class="nav-link @if(Request::segment(3) == 'collect_fees_report') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Collect Fees Report</p>
+              <p>Mengumpulkan Laporan Biaya</p>
             </a>
           </li>
         </ul>
@@ -174,7 +174,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'examinations') active @endif">
           <i class="nav-icon fas fa-clipboard-list"></i>
           <p>
-            Examinations
+            Ujian
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -182,28 +182,28 @@
           <li class="nav-item">
             <a href="{{ url('admin/examinations/exam/list') }}" class="nav-link @if(Request::segment(3) == 'exam') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Exam</p>
+              <p>Ujian</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{ url('admin/examinations/exam_schedule') }}" class="nav-link @if(Request::segment(3) == 'exam_schedule') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Exam Schedule</p>
+              <p>Jadwal Ujian</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{ url('admin/examinations/marks_register') }}" class="nav-link @if(Request::segment(3) == 'marks_register') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Marks Register</p>
+              <p>Daftar Tanda</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{ url('admin/examinations/marks_grade') }}" class="nav-link @if(Request::segment(3) == 'marks_grade') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Marks Grade</p>
+              <p>Menandai Nilai</p>
             </a>
           </li>
         </ul>
@@ -213,7 +213,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'attendance') active @endif">
           <i class="nav-icon fas fa-calendar-check"></i>
           <p>
-            Attendance
+            Kehadiran
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -221,14 +221,14 @@
           <li class="nav-item">
             <a href="{{ url('admin/attendance/student') }}" class="nav-link @if(Request::segment(3) == 'student') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Student Attendance</p>
+              <p>Kehadiran Siswa</p>
             </a>
           </li>
 
            <li class="nav-item">
             <a href="{{ url('admin/attendance/report') }}" class="nav-link @if(Request::segment(3) == 'report') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Attendance Report</p>
+              <p>Laporan Kehadiran</p>
             </a>
           </li>
         </ul>
@@ -238,7 +238,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'communicate') active @endif">
           <i class="nav-icon fas fa-comments"></i>
           <p>
-            Communicate
+            Komunikasi
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -246,14 +246,14 @@
           <li class="nav-item">
             <a href="{{ url('admin/communicate/notice_board') }}" class="nav-link @if(Request::segment(3) == 'notice_board') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Notice Board</p>
+              <p>Papan Pengumuman</p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="{{ url('admin/communicate/send_email') }}" class="nav-link @if(Request::segment(3) == 'send_email') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Send Email</p>
+              <p>Kirimkan Email</p>
             </a>
           </li>
         </ul>
@@ -263,7 +263,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'homework') active @endif">
           <i class="nav-icon fas fa-book"></i>
           <p>
-            Homework
+            PR
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -271,14 +271,14 @@
           <li class="nav-item">
             <a href="{{ url('admin/homework/homework') }}" class="nav-link @if(Request::segment(3) == 'homework') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Homework</p>
+              <p>PR</p>
             </a>
           </li>
 
            <li class="nav-item">
             <a href="{{ url('admin/homework/homework_report') }}" class="nav-link @if(Request::segment(3) == 'homework_report') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Homework Report</p>
+              <p>Laporan PR </p>
             </a>
           </li>
         </ul>
@@ -288,7 +288,7 @@
         <a href="{{ url('admin/account') }}" class="nav-link @if(Request::segment(2) == 'account') active @endif">
           <i class="nav-icon fas fa-user-cog"></i>
           <p>
-            My Account
+            Akun Saya
           </p>
         </a>
       </li>
@@ -306,7 +306,7 @@
         <a href="{{ url('admin/change_password') }}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
           <i class="nav-icon fas fa-key"></i>
           <p>
-            Change Password
+            Rubah Password
           </p>
         </a>
       </li>
@@ -326,7 +326,7 @@
           <a href="{{ url('teacher/my_student') }}" class="nav-link @if(Request::segment(2) == 'my_student') active @endif">
             <i class="nav-icon fas fa-user-graduate"></i>
             <p>
-              My Student
+              Siswa Saya
             </p>
           </a>
         </li>
@@ -335,7 +335,7 @@
           <a href="{{ url('teacher/my_class_subject') }}" class="nav-link @if(Request::segment(2) == 'my_class_subject') active @endif">
             <i class="nav-icon fas fa-book"></i>
             <p>
-              My Class & Subject
+              Kelas Saya & Mata Pelajaran
             </p>
           </a>
         </li>
@@ -344,7 +344,7 @@
         <a href="{{ url('teacher/my_exam_timetable') }}" class="nav-link @if(Request::segment(2) == 'my_exam_timetable') active @endif">
           <i class="nav-icon fas fa-calendar-alt"></i>
           <p>
-            My Exam Timetable
+            Jadwal Ujian Saya
           </p>
         </a>
       </li>
@@ -353,7 +353,7 @@
         <a href="{{ url('teacher/my_calendar') }}" class="nav-link @if(Request::segment(2) == 'my_calendar') active @endif">
           <i class="nav-icon far fa-calendar"></i>
           <p>
-            My Calendar
+            Kalender Saya
           </p>
         </a>
       </li>
@@ -362,7 +362,7 @@
         <a href="{{ url('teacher/marks_register') }}" class="nav-link @if(Request::segment(2) == 'marks_register') active @endif">
           <i class="nav-icon fas fa-clipboard-list"></i>
           <p>
-            Marks Register
+            Daftar Tanda
           </p>
         </a>
       </li>
@@ -371,7 +371,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'attendance') active @endif">
           <i class="nav-icon fas fa-calendar-check"></i>
           <p>
-            Attendance
+            Kehadiran
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -379,14 +379,14 @@
           <li class="nav-item">
             <a href="{{ url('teacher/attendance/student') }}" class="nav-link @if(Request::segment(3) == 'student') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Student Attendance</p>
+              <p>Kehadiran Siswa</p>
             </a>
           </li>
 
            <li class="nav-item">
             <a href="{{ url('teacher/attendance/report') }}" class="nav-link @if(Request::segment(3) == 'report') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Attendance Report</p>
+              <p>Laporan Kehadiran</p>
             </a>
           </li>
         </ul>
@@ -396,7 +396,7 @@
         <a href="#" class="nav-link  @if(Request::segment(2) == 'homework') active @endif">
           <i class="nav-icon fas fa-book"></i>
           <p>
-            Homework
+            PR
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
@@ -404,7 +404,7 @@
           <li class="nav-item">
             <a href="{{ url('teacher/homework/homework') }}" class="nav-link @if(Request::segment(3) == 'homework') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Homework</p>
+              <p>PR</p>
             </a>
           </li>
         </ul>
@@ -414,7 +414,7 @@
         <a href="{{ url('teacher/my_notice_board') }}" class="nav-link @if(Request::segment(2) == 'my_notice_board') active @endif">
           <i class="nav-icon fas fa-bullhorn"></i>
           <p>
-            My Notice Board
+            Papan Pengumuan Saya
           </p>
         </a>
       </li>
@@ -423,7 +423,7 @@
         <a href="{{ url('teacher/account') }}" class="nav-link @if(Request::segment(2) == 'account') active @endif">
           <i class="nav-icon fas fa-user-cog"></i>
           <p>
-            My Account
+            Akun Saya
           </p>
         </a>
       </li>
@@ -432,7 +432,7 @@
         <a href="{{ url('teacher/change_password') }}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
           <i class="nav-icon fas fa-key"></i>
           <p>
-            Change Password
+            Rubah Password
           </p>
         </a>
       </li>
@@ -452,7 +452,7 @@
         <a href="{{ url('student/fees_collection') }}" class="nav-link @if(Request::segment(2) == 'fees_collection') active @endif">
           <i class="nav-icon fas fa-money-bill-wave"></i>
           <p>
-            Fees Collection
+            Pengumpulan Biaya
           </p>
         </a>
       </li>
@@ -461,7 +461,7 @@
         <a href="{{ url('student/my_calendar') }}" class="nav-link @if(Request::segment(2) == 'my_calendar') active @endif">
           <i class="nav-icon far fa-calendar"></i>
           <p>
-            My Calendar
+            Kalender Saya
           </p>
         </a>
       </li>
@@ -470,7 +470,7 @@
         <a href="{{ url('student/my_subject') }}" class="nav-link @if(Request::segment(2) == 'my_subject') active @endif">
           <i class="nav-icon fas fa-book"></i>
           <p>
-            My Subject
+            Mata Pelajaran Saya
           </p>
         </a>
       </li>
@@ -479,7 +479,7 @@
         <a href="{{ url('student/my_timetable') }}" class="nav-link @if(Request::segment(2) == 'my_timetable') active @endif">
           <i class="nav-icon fas fa-calendar-alt"></i>
           <p>
-            My Timetable
+            Jadwal Saya
           </p>
         </a>
       </li>
@@ -488,7 +488,7 @@
         <a href="{{ url('student/my_exam_timetable') }}" class="nav-link @if(Request::segment(2) == 'my_exam_timetable') active @endif">
           <i class="nav-icon fas fa-calendar-check"></i>
           <p>
-            My Exam Timetable
+            Jadwal Ujian Saya
           </p>
         </a>
       </li>
@@ -497,7 +497,7 @@
         <a href="{{ url('student/my_exam_result') }}" class="nav-link @if(Request::segment(2) == 'my_exam_result') active @endif">
           <i class="nav-icon fas fa-poll"></i>
           <p>
-            My Exam Result
+            Hasil Ujian Saya
           </p>
         </a>
       </li>
@@ -506,7 +506,7 @@
         <a href="{{ url('student/my_attendance') }}" class="nav-link @if(Request::segment(2) == 'my_attendance') active @endif">
           <i class="nav-icon fas fa-user-check"></i>
           <p>
-            My Attendance
+            Kehadiran Saya
           </p>
         </a>
       </li>
@@ -515,7 +515,7 @@
         <a href="{{ url('student/my_notice_board') }}" class="nav-link @if(Request::segment(2) == 'my_notice_board') active @endif">
           <i class="nav-icon fas fa-bullhorn"></i>
           <p>
-            My Notice Board
+            Papan Pengumuman Saya
           </p>
         </a>
       </li>
@@ -524,7 +524,7 @@
         <a href="{{ url('student/my_homework') }}" class="nav-link @if(Request::segment(2) == 'my_homework') active @endif">
           <i class="nav-icon fas fa-book-reader"></i>
           <p>
-            My Homework
+            PR Saya
           </p>
         </a>
       </li>
@@ -533,7 +533,7 @@
         <a href="{{ url('student/my_submitted_homework') }}" class="nav-link @if(Request::segment(2) == 'my_submitted_homework') active @endif">
           <i class="nav-icon fas fa-paper-plane"></i>
           <p>
-            Submitted Homework
+            PR Terkirim Saya
           </p>
         </a>
       </li>
@@ -542,7 +542,7 @@
         <a href="{{ url('student/account') }}" class="nav-link @if(Request::segment(2) == 'account') active @endif">
           <i class="nav-icon fas fa-user-cog"></i>
           <p>
-            My Account
+            Akun Saya
           </p>
         </a>
       </li>
@@ -551,7 +551,7 @@
         <a href="{{ url('student/change_password') }}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
           <i class="nav-icon fas fa-key"></i>
           <p>
-            Change Password
+            Rubah Password
           </p>
         </a>
       </li>
@@ -571,7 +571,7 @@
         <a href="{{ url('parent/my_student') }}" class="nav-link @if(Request::segment(2) == 'my_student') active @endif">
           <i class="nav-icon fas fa-user-graduate"></i>
           <p>
-            My Student
+            Siswa Saya
           </p>
         </a>
       </li>
@@ -580,7 +580,7 @@
         <a href="{{ url('parent/my_student_notice_board') }}" class="nav-link @if(Request::segment(2) == 'my_student_notice_board') active @endif">
           <i class="nav-icon fas fa-bullhorn"></i>
           <p>
-            My Student Notice Board
+            Papan Pengumuman Siswa Saya
           </p>
         </a>
       </li>
@@ -589,7 +589,7 @@
         <a href="{{ url('parent/my_notice_board') }}" class="nav-link @if(Request::segment(2) == 'my_notice_board') active @endif">
           <i class="nav-icon fas fa-bullhorn"></i>
           <p>
-            My Notice Board
+            Papan Pengumuman Saya
           </p>
         </a>
       </li>
@@ -598,7 +598,7 @@
         <a href="{{ url('parent/account') }}" class="nav-link @if(Request::segment(2) == 'account') active @endif">
           <i class="nav-icon fas fa-user-cog"></i>
           <p>
-            My Account
+            Akun Saya
           </p>
         </a>
       </li>
@@ -607,7 +607,7 @@
         <a href="{{ url('parent/change_password') }}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
           <i class="nav-icon fas fa-key"></i>
           <p>
-            Change Password
+            Rubah Password
           </p>
         </a>
       </li>

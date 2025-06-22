@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Print Exam Result</title>
+	<title>Cetak Hasil Ujian</title>
 	<style type="text/css">
 		@page {
 			size: 8.3in 11.7in;
@@ -28,7 +28,7 @@
 		}
 		.td {
 			border: 1px solid #000;
-			padding: 3px;	
+			padding: 3px;
 		}
 
 		.text-container {
@@ -64,7 +64,7 @@
 								<table class="margin-bottom" style="width: 100%;">
 									<tbody>
 										<tr>
-											<td width="27%">Name Of Student : </td>
+											<td width="27%">Nama Siswa : </td>
 											<td style="border-bottom: 1px solid; width: 100%;">{{ $getStudent->name }} {{ $getStudent->last_name }}</td>
 										</tr>
 									</tbody>
@@ -73,7 +73,7 @@
 								<table class="margin-bottom" style="width: 100%;">
 									<tbody>
 										<tr>
-											<td width="23%">Admission No : </td>
+											<td width="23%">Nomor Pendaftaran : </td>
 											<td style="border-bottom: 1px solid; width: 100%;">{{ $getStudent->admission_number }}</td>
 										</tr>
 									</tbody>
@@ -83,7 +83,7 @@
 								<table class="margin-bottom" style="width: 100%;">
 									<tbody>
 										<tr>
-											<td width="23%">Class : </td>
+											<td width="23%">Kelas : </td>
 											<td style="border-bottom: 1px solid; width: 100%;">{{ $getClass->class_name }}</td>
 										</tr>
 									</tbody>
@@ -92,8 +92,8 @@
 								<table class="margin-bottom" style="width: 100%;">
 									<tbody>
 										<tr>
-											
-											<td width="11%">Term : </td>
+
+											<td width="11%">Termin : </td>
 											<td style="border-bottom: 1px solid; width: 100%;">{{ $getExam->name }}</td>
 										</tr>
 									</tbody>
@@ -103,7 +103,7 @@
 							<td width="20%" valign="top">
 								<img src="{{ $getStudent->getProfileDirect() }}" style="border-radius: 6px;" height="100px" width="100px">
 								<br>
-								Gender : {{ $getStudent->gender }}
+								Jenis Kelamin : {{ $getStudent->gender }}
 							</td>
 						</tr>
 				</table>
@@ -114,15 +114,15 @@
 						<table class="table-bg">
 						   <thead>
 						      <tr>
-						         <th style="text-align: left;" class="th">Subject</th>
-						         <th class="th">Class Work</th>
-						         <th class="th">Test Work</th>
-						         <th class="th">Home Work</th>
-						         <th class="th">Exam</th>
-						         <th class="th">Total Score</th>
-						         <th class="th">Passing Marks</th>
-						         <th class="th">Full Marks</th>
-						         <th class="th">Result</th>
+						         <th style="text-align: left;" class="th">Mata Pelajaran</th>
+						         <th class="th">Kerja Kelas</th>
+						         <th class="th">Kerja Tes</th>
+						         <th class="th">Kerja Rumah</th>
+						         <th class="th">Ujian</th>
+						         <th class="th">Skor Total</th>
+						         <th class="th">Nilai Kelulusan</th>
+						         <th class="th">Nilai Penuh</th>
+						         <th class="th">Hasil</th>
 						      </tr>
 						   </thead>
 				  <tbody>
@@ -161,23 +161,23 @@
 
                     <tr>
                       <td class="td" colspan="2">
-                        <b>Grand Total: {{ $total_score }}/{{ $full_marks }}</b>
+                        <b>Total Skor : {{ $total_score }}/{{ $full_marks }}</b>
                       </td>
                       <td class="td" colspan="2">
                         @php
                           $percentage = ($total_score * 100) / $full_marks;
                           $getGrade = App\Models\MarksGradeModel::getGrade($percentage);
                         @endphp
-                        <b>Percentage: {{ round($percentage, 2) }}%</b>
+                        <b>Persentase : {{ round($percentage, 2) }}%</b>
                       </td>
 
                       <td class="td" colspan="2">
-                        <b>Grade: {{ $getGrade }}</b>
+                        <b>Nilai : {{ $getGrade }}</b>
                       </td>
                       <td class="td" colspan="3">
-                        <b>Result:  @if($result_validation == 0) 
-                                      <span style="color: green;">Pass</span>  
-                                    @else  
+                        <b>Hasil :  @if($result_validation == 0)
+                                      <span style="color: green;">Pass</span>
+                                    @else
                                       <span style="color: red;">Fail</span>
                                     @endif
                                   </b>
@@ -187,7 +187,7 @@
                   </tbody>
 						</table>
 
-					
+
 				</div>
 
 				<div>
@@ -197,7 +197,7 @@
 				<table class="margin-bottom" style="width: 100%;">
 						<tbody>
 							<tr>
-								<td width="15%">Signature : </td>
+								<td width="15%">Tanda Tangan : </td>
 								<td style="border-bottom: 1px solid; width: 100%;"></td>
 							</tr>
 						</tbody>

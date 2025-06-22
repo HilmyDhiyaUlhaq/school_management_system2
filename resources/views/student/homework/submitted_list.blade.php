@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>My Submitted Homework</h1>
+            <h1>PR Saya yang Dikumpulkan</h1>
           </div>
         </div>
       </div>
@@ -18,61 +18,61 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search My Submitted Homework</h3>
+                <h3 class="card-title">Cari PR Saya yang Dikumpulkan</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
+
                 <div class="form-group col-md-2">
-                    <label>Class</label>
+                    <label>Kelas</label>
                     <input type="text" class="form-control" value="{{ Request::get('class_name') }}" name="class_name"  placeholder="Class Name">
                   </div>
 
-          
+
                   <div class="form-group col-md-2">
-                    <label>Subject</label>
+                    <label>Mata Pelajaran</label>
                     <input type="text" class="form-control" value="{{ Request::get('subject_name') }}" name="subject_name"  placeholder="Subject Name">
                   </div>
 
-            
+
 
                   <div class="form-group col-md-2">
-                    <label>From Homework Date</label>
+                    <label>Dari Tanggal Pekerjaan Rumah</label>
                     <input type="date" class="form-control" name="from_homework_date" value="{{ Request::get('from_homework_date') }}"  >
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>To Homework Date</label>
+                    <label>Ke Tanggal Pekerjaan Rumah </label>
                     <input type="date" class="form-control" name="to_homework_date" value="{{ Request::get('to_homework_date') }}"  >
                   </div>
 
 
                    <div class="form-group col-md-2">
-                    <label>From Submission Date</label>
+                    <label>Dari Tanggal Pengumpulan </label>
                     <input type="date" class="form-control" name="from_submission_date" value="{{ Request::get('from_submission_date') }}"  >
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>To Submission Date</label>
+                    <label>Ke Tanggal Pengumpulan</label>
                     <input type="date" class="form-control" name="to_submission_date" value="{{ Request::get('to_submission_date') }}"  >
                   </div>
 
 
                   <div class="form-group col-md-2">
-                    <label>From Submitted Created Date</label>
+                    <label>Dari Tanggal yang Diajukan Dibuat</label>
                     <input type="date" class="form-control" name="from_created_date" value="{{ Request::get('from_created_date') }}"  >
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>To Submitted Created Date</label>
+                    <label>Ke Tanggal Pembuatan yang Diajukan</label>
                     <input type="date" class="form-control" name="to_created_date" value="{{ Request::get('to_created_date') }}"  >
                   </div>
 
-                   
+
 
                   <div class="form-group col-md-3">
-                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
                     <a href="{{ url('student/my_submitted_homework') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
 
                   </div>
@@ -86,24 +86,24 @@
             @include('_message')
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Submitted Homework List</h3>
+                <h3 class="card-title">Daftar PR yang Dikumpulkan</h3>
               </div>
               <div class="card-body p-0">
                 <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Class</th>
-                      <th>Subject</th>
-                      <th>Homework Date</th>
-                      <th>Submission Date</th>
-                      <th>Document</th>
-                      <th>Description</th>
-                      <th>Created Date</th>
+                      <th>Kelas</th>
+                      <th>Mapel</th>
+                      <th>Tanggal PR</th>
+                      <th>Tanggal Pengumpulan</th>
+                      <th>Dokumen</th>
+                      <th>Deskripsi</th>
+                      <th>Tanggal Dibuat</th>
 
-                      <th>Submitted Document</th>
-                      <th>Submitted Description</th>
-                      <th>Submitted Created Date</th>
+                      <th>Dokumen yang Diajukan</th>
+                      <th>Deskripsi yang Diajukan</th>
+                      <th>Tanggal Pembuatan yang Diajukan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -134,11 +134,11 @@
                             {!! $value->description !!}
                           </td>
                           <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
-                         
+
                         </tr>
                       @empty
                       <tr>
-                        <td colspan="100%">Record not found</td>
+                        <td colspan="100%">Data Tidak Ditemukan</td>
                       </tr>
                       @endforelse
 

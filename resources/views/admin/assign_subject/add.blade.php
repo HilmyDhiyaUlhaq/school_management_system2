@@ -8,9 +8,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add New Assign Subject</h1>
+            <h1>Tambahkan Tugas Baru dengan Subjek</h1>
           </div>
-    
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -26,9 +26,9 @@
                  {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Class Name</label>
+                    <label>Nama Kelas</label>
                      <select class="form-control" name="class_id" required>
-                        <option value="">Select Class</option>
+                        <option value="">Pilih Kelas</option>
                         @foreach($getClass as $class)
                           <option value="{{ $class->id }}">{{ $class->name }}</option>
                         @endforeach
@@ -38,7 +38,7 @@
 
 
                    <div class="form-group">
-                    <label>Subject Name</label>
+                    <label>Nama Mata Pelajaran</label>
                         @foreach($getSubject as $subject)
                         <div>
                           <label style="font-weight: normal;">
@@ -51,13 +51,13 @@
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status">
-                        <option value="0">Active</option>
-                        <option value="1">Inactive</option>
+                        <option value="0">Aktif</option>
+                        <option value="1">Inaktif</option>
                     </select>
-                    
+
                   </div>
-              
-                
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -66,12 +66,12 @@
                 </div>
               </form>
             </div>
-         
+
 
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

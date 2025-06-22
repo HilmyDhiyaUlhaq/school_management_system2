@@ -8,9 +8,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Assign Class Teacher</h1>
+            <h1>Edit Penugasan Guru Kelas</h1>
           </div>
-    
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -26,9 +26,9 @@
                  {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Class Name</label>
+                    <label>Nama Kelas</label>
                      <select class="form-control" name="class_id" required>
-                        <option value="">Select Class</option>
+                        <option value="">Pilih Kelas</option>
                         @foreach($getClass as $class)
                           <option {{ ($getRecord->class_id == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
                         @endforeach
@@ -38,18 +38,18 @@
 
 
                    <div class="form-group">
-                    <label>Teacher Name</label>
+                    <label>Nama Guru</label>
                         @foreach($getTeacher as $teacher)
                         <div>
                           <label style="font-weight: normal;">
                             @php
-                              $checked = '';                             
+                              $checked = '';
                             @endphp
 
                             @foreach($getAssignTeacherID as $teacherID)
                               @if($teacherID->teacher_id == $teacher->id)
                                 @php
-                                  $checked = 'checked';                             
+                                  $checked = 'checked';
                                 @endphp
                               @endif
                             @endforeach
@@ -62,13 +62,13 @@
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status">
-                        <option  {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Active</option>
-                        <option  {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inactive</option>
+                        <option  {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Aktif</option>
+                        <option  {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inaktif</option>
                     </select>
-                    
+
                   </div>
-              
-                
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -77,12 +77,12 @@
                 </div>
               </form>
             </div>
-         
+
 
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

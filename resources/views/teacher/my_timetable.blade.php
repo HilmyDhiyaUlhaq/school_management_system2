@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>My Timetable ({{ $getClass->name }} - {{ $getSubject->name }})</h1>
+            <h1>Jadwal Saya ({{ $getClass->name }} - {{ $getSubject->name }})</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -21,8 +21,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-         
-           
+
+
               <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
@@ -34,10 +34,10 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Week</th>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Room Number</th>
+                      <th>Minggu</th>
+                      <th>Waktu Mulai</th>
+                      <th>Waktu Selesai</th>
+                      <th>Nomor Kamar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -45,7 +45,7 @@
                       <tr>
                         <td>{{ $valueW['week_name'] }}</td>
                         <td>{{ !empty($valueW['start_time']) ? date('h:i A',strtotime($valueW['start_time'])) : '' }}</td>
-                        <td>{{ !empty($valueW['end_time']) ? date('h:i A',strtotime($valueW['end_time'])) : '' }}</td>                        
+                        <td>{{ !empty($valueW['end_time']) ? date('h:i A',strtotime($valueW['end_time'])) : '' }}</td>
                         <td>{{ $valueW['room_number'] }}</td>
                       </tr>
                     @endforeach
@@ -53,7 +53,7 @@
                 </table>
               </div>
             </div>
-       
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -62,7 +62,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

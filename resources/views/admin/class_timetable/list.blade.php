@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Class Timetable</h1>
+            <h1>Jadwal Kelas</h1>
           </div>
-      
 
-         
-          
+
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -29,36 +29,36 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
              @include('_message')
-          
+
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Class Timetable</h3>
+                <h3 class="card-title">Cari Jadwal Kelas</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-3">
-                    <label>Class Name</label>
+                    <label>Nama Kelas</label>
                     <select class="form-control getClass" name="class_id" required>
-                        <option value="">Select</option>
+                        <option value="">Pilih</option>
                         @foreach($getClass as $class)
                           <option {{ (Request::get('class_id') == $class->id) ? 'selected' : '' }} value="{{ $class->id }}">{{ $class->name }}</option>
                         @endforeach
                     </select>
-                    
+
                   </div>
 
                   <div class="form-group col-md-3">
-                    <label>Subject Name</label>
+                    <label>Nama Mata Pelajaran</label>
                     <select class="form-control getSubject" name="subject_id" required>
-                        <option value="">Select</option>
+                        <option value="">Pilih</option>
                         @if(!empty($getSubject))
                            @foreach($getSubject as $subject)
                             <option {{ (Request::get('subject_id') == $subject->subject_id) ? 'selected' : '' }} value="{{ $subject->subject_id }}">{{ $subject->subject_name }}</option>
@@ -66,8 +66,8 @@
                         @endif
                     </select>
                   </div>
-                 
-              
+
+
                   <div class="form-group col-md-3">
                     <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
                     <a href="{{ url('admin/class_timetable/list') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
@@ -78,7 +78,7 @@
                 </div>
               </form>
             </div>
-         
+
 
             @if(!empty(Request::get('class_id')) && !empty(Request::get('subject_id')))
             <form action="{{ url('admin/class_timetable/add') }}" method="post">
@@ -87,24 +87,24 @@
                 <input type="hidden" name="class_id" value="{{ Request::get('class_id') }}">
               <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Class Timetable</h3>
+                <h3 class="card-title">Jadwal Kelas</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Week</th>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Room Number</th>
+                      <th>Minggu</th>
+                      <th>Waktu Mulai</th>
+                      <th>Waktu Berakhir</th>
+                      <th>Nomor Ruangan</th>
                     </tr>
                   </thead>
                   <tbody>
                     @php
                     $i = 1;
                     @endphp
-                    @foreach($week as $value)   
+                    @foreach($week as $value)
                       <tr>
                           <th>
                              <input type="hidden" name="timetable[{{ $i }}][week_id]" value="{{ $value['week_id'] }}">
@@ -130,7 +130,7 @@
                 <div style="text-align: center; padding: 20px;">
                 <button class="btn btn-primary">Submit</button>
                 </div>
-                
+
 
               </div>
 
@@ -140,7 +140,7 @@
             </form>
 
             @endif
-           
+
 
               </div>
 
@@ -151,7 +151,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

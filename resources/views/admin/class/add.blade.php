@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <h1>Add New Class</h1>
           </div>
-    
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -26,13 +26,13 @@
                  {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Class Name</label>
+                    <label>Nama Kelas</label>
                     <input type="text" class="form-control" name="name" required placeholder="Class Name">
                   </div>
 
 
                   <div class="form-group">
-                    <label>Amount ($)</label>
+                    <label>Jumlah ($)</label>
                     <input type="number" class="form-control" name="amount" required placeholder="Amount">
                   </div>
 
@@ -40,13 +40,13 @@
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status">
-                        <option value="0">Active</option>
-                        <option value="1">Inactive</option>
+                        <option value="0">Aktif</option>
+                        <option value="1">Inaktif</option>
                     </select>
-                    
+
                   </div>
-              
-                
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -55,12 +55,12 @@
                 </div>
               </form>
             </div>
-         
+
 
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

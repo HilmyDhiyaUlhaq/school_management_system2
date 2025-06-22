@@ -10,14 +10,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Teacher List (Total : {{ $getRecord->total() }})</h1>
+            <h1>List Guru (Total : {{ $getRecord->total() }})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-              <a href="{{ url('admin/teacher/add') }}" class="btn btn-primary">Add New Teacher</a>
+              <a href="{{ url('admin/teacher/add') }}" class="btn btn-primary">Tambahkan Guru Baru</a>
           </div>
 
-         
-          
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -31,28 +31,28 @@
 
       <div class="container-fluid">
         <div class="row">
-       
+
           <!-- /.col -->
           <div class="col-md-12">
 
 
-         
+
            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Search Teacher</h3>
+                <h3 class="card-title">Cari Guru</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">
                   <div class="row">
-                    
-                  
+
+
                   <div class="form-group col-md-2">
-                    <label>Name</label>
+                    <label>Nama</label>
                     <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name"  placeholder="Name">
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>Last Name</label>
+                    <label>Nama Akhir</label>
                     <input type="text" class="form-control" value="{{ Request::get('last_name') }}" name="last_name"  placeholder="Last Name">
                   </div>
 
@@ -62,28 +62,28 @@
                   </div>
 
                   <div class="form-group col-md-2">
-                    <label>Gender</label>
+                    <label>Jenis Kelamin</label>
                       <select class="form-control" name="gender">
                           <option value="">Select Gender</option>
-                          <option {{ (Request::get('gender') == 'Male') ? 'selected' : '' }} value="Male">Male</option>
-                          <option {{ (Request::get('gender') == 'Female') ? 'selected' : '' }} value="Female">Female</option>
-                          <option {{ (Request::get('gender') == 'Other') ? 'selected' : '' }} value="Other">Other</option>
-                      </select>                    
+                          <option {{ (Request::get('gender') == 'Male') ? 'selected' : '' }} value="Male">Laki-Laki</option>
+                          <option {{ (Request::get('gender') == 'Female') ? 'selected' : '' }} value="Female">Perempuan</option>
+
+                      </select>
                   </div>
 
                     <div class="form-group col-md-2">
-                    <label>Mobile Number</label>
+                    <label>Nomor HP</label>
                     <input type="text" class="form-control" name="mobile_number" value="{{ Request::get('mobile_number') }}"  placeholder="Mobile Number">
                   </div>
 
 
                     <div class="form-group col-md-2">
-                    <label> Marital Status </label>
+                    <label> Status Perkawinan </label>
                     <input type="text" class="form-control" name="marital_status" value="{{ Request::get('marital_status') }}"  placeholder="Marital Status">
                   </div>
 
                    <div class="form-group col-md-2">
-                    <label> Current Address  </label>
+                    <label> Alamat Terkini </label>
                     <input type="text" class="form-control" name="address" value="{{ Request::get('address') }}"  placeholder="Current Address">
                   </div>
 
@@ -91,25 +91,25 @@
                     <label>Status</label>
                       <select class="form-control" name="status">
                           <option value="">Select Status</option>
-                          <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
-                          <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
-                          
-                      </select>                    
+                          <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Aktif</option>
+                          <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inaktif</option>
+
+                      </select>
                   </div>
-                    
-                  <div class="form-group col-md-2">
-                    <label>Date Of Joining</label>
-                    <input type="date" class="form-control" name="admission_date" value="{{ Request::get('admission_date') }}" >
-                  </div>
-                  
 
                   <div class="form-group col-md-2">
-                    <label>Created Date</label>
+                    <label>Tanggal Bergabung</label>
+                    <input type="date" class="form-control" name="admission_date" value="{{ Request::get('admission_date') }}" >
+                  </div>
+
+
+                  <div class="form-group col-md-2">
+                    <label>Tanggal Dibuat </label>
                     <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}"  placeholder="">
                   </div>
 
                   <div class="form-group col-md-3">
-                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Cari</button>
                     <a href="{{ url('admin/teacher/list') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
 
                   </div>
@@ -118,16 +118,16 @@
                 </div>
               </form>
             </div>
-          
+
 
 
             @include('_message')
-            
+
             <!-- /.card -->
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Teacher List</h3>
+                <h3 class="card-title">List Guru</h3>
 
                 <form action="{{ url('admin/teacher/export_excel') }}" method="post" style="float: right;">
                     {{ csrf_field() }}
@@ -150,22 +150,22 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Profile Pic</th>
-                      <th>Teacher Name</th>
+                      <th>Foto Profil</th>
+                      <th>Nama Guru</th>
                       <th>Email</th>
-                      <th>Gender</th>
-                      <th>Date of Birth </th>
-                      <th>Date Of Joining</th>
-                      <th>Mobile Number</th>
-                      <th>Marital Status  </th>
-                      <th>Current Address </th>
-                      <th>Permanent Address </th>
-                      <th>Qualification</th>
-                      <th>Work Experience</th>
-                      <th>Note</th>
+                      <th>jenis Kelamin</th>
+                      <th>Tanggal Kelahiran </th>
+                      <th>Tanggal Bergabung</th>
+                      <th>Nomor HP</th>
+                      <th>Status Perkawinan  </th>
+                      <th>Alamat Sekarang </th>
+                      <th>Alamat Permanen </th>
+                      <th>Kualifikasi</th>
+                      <th>Penalaman Kerja</th>
+                      <th>Catatan</th>
                       <th>Status</th>
-                      <th>Created Date</th>
-                      <th>Action</th>
+                      <th>Tanggal Dibuat</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -194,14 +194,14 @@
                           <td>{{ $value->mobile_number }}</td>
                           <td>{{ $value->marital_status }}</td>
                           <td>{{ $value->address }}</td>
-                          
-                         
+
+
                           <td>{{ $value->permanent_address }}</td>
                           <td>{{ $value->qualification }}</td>
                           <td>{{ $value->work_experience }}</td>
                           <td>{{ $value->note }}</td>
                           <td>{{ ($value->status == 0) ? 'Active' : 'Inactive' }}</td>
-                          
+
 
                           <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                           <td style="min-width: 270px;">
@@ -226,7 +226,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-   
+
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
