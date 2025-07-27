@@ -21,7 +21,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>${{ number_format($TotalPaidAmount, 2) }}</h3>
+                <h3>Rp {{ number_format($TotalPaidAmount, 0, ',', '.') }}</h3>
                 <p>Total Jumlah Yang Dibayarkan</p>
               </div>
               <div class="icon">

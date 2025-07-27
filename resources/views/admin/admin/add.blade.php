@@ -8,9 +8,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add New Admin</h1>
+            <h1>Tambahkan Admin Baru</h1>
           </div>
-    
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -43,9 +43,9 @@
                     <label>Profile Pic <span style="color: red;"></span></label>
                     <input type="file" class="form-control" name="profile_pic" >
                     <div style="color:red">{{ $errors->first('profile_pic') }}</div>
-                  </div> 
-             
-                
+                  </div>
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -54,12 +54,12 @@
                 </div>
               </form>
             </div>
-         
+
 
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

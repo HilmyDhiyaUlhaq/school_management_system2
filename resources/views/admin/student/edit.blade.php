@@ -38,6 +38,19 @@
                           <div style="color:red">{{ $errors->first('last_name') }}</div>
                         </div>
 
+                        <div class="form-group col-md-6">
+                            <label>Orang Tua</label>
+                            <select class="form-control" name="parent_id">
+                                <option value="">Pilih Orang Tua</option>
+                                @foreach($getParent as $parent)
+                                    <option value="{{ $parent->id }}" {{ ($getRecord->parent_id == $parent->id) ? 'selected' : '' }}>
+                                        {{ $parent->name }} {{ $parent->last_name }} ({{ $parent->email }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div style="color: red;">{{ $errors->first('parent_id') }}</div>
+                        </div>
+
 
                         <div class="form-group col-md-6">
                           <label>Nomor Pendaftaran <span style="color: red;">*</span></label>
@@ -67,9 +80,9 @@
                           <label>Jenis Kelamin <span style="color: red;">*</span></label>
                           <select class="form-control" required name="gender">
                               <option value="">Pilih Jenis Kelamin</option>
-                              <option {{ (old('gender', $getRecord->gender) == 'Male') ? 'selected' : '' }} value="Male">Male</option>
-                              <option {{ (old('gender', $getRecord->gender) == 'Female') ? 'selected' : '' }} value="Female">Female</option>
-                              <option {{ (old('gender', $getRecord->gender) == 'Other') ? 'selected' : '' }} value="Other">Other</option>
+                              <option {{ (old('gender', $getRecord->gender) == 'Male') ? 'selected' : '' }} value="Male">Laki-Laki</option>
+                              <option {{ (old('gender', $getRecord->gender) == 'Female') ? 'selected' : '' }} value="Female">Perempuan</option>
+
                           </select>
                           <div style="color:red">{{ $errors->first('gender') }}</div>
                         </div>
@@ -82,17 +95,6 @@
                         </div>
 
 
-                         <div class="form-group col-md-6">
-                          <label>Kasta <span style="color: red;"></span></label>
-                          <input type="text" class="form-control" value="{{ old('caste', $getRecord->caste) }}" name="caste"  placeholder="Caste">
-                          <div style="color:red">{{ $errors->first('caste') }}</div>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                          <label>Agama <span style="color: red;"></span></label>
-                          <input type="text" class="form-control" value="{{ old('religion', $getRecord->religion) }}" name="religion"  placeholder="Religion">
-                          <div style="color:red">{{ $errors->first('religion') }}</div>
-                        </div>
 
                         <div class="form-group col-md-6">
                           <label>Nomor HP <span style="color: red;"></span></label>

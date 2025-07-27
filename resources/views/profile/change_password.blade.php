@@ -30,12 +30,12 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label>Password Lama</label>
-                    <input type="password" class="form-control" name="old_password" required placeholder="Old Password">
+                    <input type="password" class="form-control" name="old_password" required placeholder="Kata Sandi Lama">
                   </div>
 
                   <div class="form-group">
                     <label>Password Baru</label>
-                    <input type="password" class="form-control" name="new_password" required placeholder="New Password">
+                    <input type="password" class="form-control" name="new_password" required placeholder="Kata Sandi Baru">
                   </div>
 
 

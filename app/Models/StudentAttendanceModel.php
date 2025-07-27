@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\AutoIdManager;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
 
 class StudentAttendanceModel extends Model
 {
+    use AutoIdManager;
+
     use HasFactory;
 
     protected $table = 'student_attendance';

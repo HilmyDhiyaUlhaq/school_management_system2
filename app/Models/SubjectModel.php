@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
+use App\Traits\AutoIdManager;
 class SubjectModel extends Model
 {
-    use HasFactory;
+    use HasFactory, AutoIdManager;
 
     protected $table = 'subject';
 
@@ -68,6 +69,6 @@ class SubjectModel extends Model
         return $return;
     }
 
-    
-   
+
+
 }

@@ -103,7 +103,7 @@
     padding: 20px;
     border-bottom: 2px solid #fff;
     height: 500px;
-    overflow: auto; 
+    overflow: auto;
 }
 
 .chat .chat-history ul {
@@ -292,7 +292,7 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1>My Chat</h1>
-        </div>    
+        </div>
       </div>
     </div>
   </section>
@@ -307,9 +307,9 @@
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="getSearchUser"><i class="fa fa-search"></i></span>
                               </div>
-                              <input type="text" id="getSearch" class="form-control" placeholder="Search...">
+                              <input type="text" id="getSearch" class="form-control" placeholder="Cari ...">
                               <input type="hidden" id="getReceiverIDDynamic" value="{{ $receiver_id }}">
-                              
+
                           </div>
                           <ul class="list-unstyled chat-list mt-2 mb-0" id="getSearchUserDynamic">
                                 @include('chat._user')
@@ -337,7 +337,7 @@
     <script src="{{ url('public/emojionearea/emojionearea.min.js') }}"></script>
 
     <script type="text/javascript">
-        
+
         $(".emojionearea").emojioneArea({});
 
         $('body').delegate('.getChatWindows', 'click', function(e) {
@@ -365,8 +365,8 @@
                 error: function(data){
 
                 },
-                
-            });     
+
+            });
        });
 
 
@@ -389,10 +389,10 @@
                     error: function(data){
 
                     },
-                
-                }); 
-        }); 
-        
+
+                });
+        });
+
 
        $('body').delegate('#submit_message', 'submit', function(e) {
             e.preventDefault();
@@ -408,17 +408,17 @@
                      $('#ClearMessage').val('');
                      $('#file_name').val('');
                      $('#getFileName').html('');
-                     $('.emojionearea-editor').html('');                     
+                     $('.emojionearea-editor').html('');
                      srolldown();
                 },
                 error: function(data){
 
                 },
-                
-            });     
+
+            });
        });
 
-       function srolldown() 
+       function srolldown()
        {
            $('.chat-history').animate({scrollTop: $('.chat-history').prop("scrollHeight")+300000}, 500);
        }

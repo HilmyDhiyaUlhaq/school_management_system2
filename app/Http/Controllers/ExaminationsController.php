@@ -30,7 +30,7 @@ class ExaminationsController extends Controller
 
 
     public function exam_add()
-    {        
+    {
         $data['header_title'] = "Add New Exam";
         return view('admin.examinations.exam.add',$data);
     }
@@ -53,13 +53,13 @@ class ExaminationsController extends Controller
         if(!empty($data['getRecord']))
         {
             $data['header_title'] = "Edit Exam";
-            return view('admin.examinations.exam.edit',$data);    
+            return view('admin.examinations.exam.edit',$data);
         }
         else
         {
             abort(404);
         }
-        
+
     }
 
 
@@ -76,19 +76,20 @@ class ExaminationsController extends Controller
 
     public function exam_delete($id)
     {
-        $getRecord = ExamModel::getSingle($id);
-        if(!empty($getRecord))
-        {
-            $getRecord->is_delete = 1;
-            $getRecord->save();
+        try {
+            $save = ExamModel::getSingle($id);
 
-            return redirect()->back()->with('success', "Exam successfully deleted");
+            if (!empty($save)) {
+                // Hard delete
+                $save->delete();
+
+                return redirect()->back()->with('success', "Exam berhasil dihapus permanen");
+            } else {
+                return redirect()->back()->with('error', "Exam tidak ditemukan");
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', "Terjadi kesalahan: " . $e->getMessage());
         }
-        else
-        {
-            abort(404);
-        }
-        
     }
 
 
@@ -96,7 +97,7 @@ class ExaminationsController extends Controller
     {
         $data['getClass'] = ClassModel::getClass();
         $data['getExam'] = ExamModel::getExam();
-        
+
         $result = array();
         if(!empty($request->get('exam_id')) && !empty($request->get('class_id')))
         {
@@ -140,13 +141,13 @@ class ExaminationsController extends Controller
 
 
         $data['header_title'] = "Exam Schedule";
-        return view('admin.examinations.exam_schedule',$data);   
+        return view('admin.examinations.exam_schedule',$data);
     }
 
     public function exam_schedule_insert(Request $request)
     {
         ExamScheduleModel::deleteRecord($request->exam_id, $request->class_id);
-        
+
         if(!empty($request->schedule))
         {
             foreach($request->schedule as $schedule)
@@ -164,15 +165,15 @@ class ExaminationsController extends Controller
                     $exam->full_marks = $schedule['full_marks'];
                     $exam->passing_mark = $schedule['passing_mark'];
                     $exam->created_by = Auth::user()->id;
-                    $exam->save();                    
+                    $exam->save();
                 }
-                
+
             }
         }
 
         return redirect()->back()->with('success', "Exam Schedule Successfully Saved");
     }
-    
+
 
     public function marks_register(Request $request)
     {
@@ -185,25 +186,25 @@ class ExaminationsController extends Controller
 
             $data['getStudent'] = User::getStudentClass($request->get('class_id'));
         }
-        
+
         $data['header_title'] = "Marks Register";
-        return view('admin.examinations.marks_register',$data);   
+        return view('admin.examinations.marks_register',$data);
     }
 
     public function marks_register_teacher(Request $request)
     {
         $data['getClass'] = AssignClassTeacherModel::getMyClassSubjectGroup(Auth::user()->id);
         $data['getExam'] = ExamScheduleModel::getExamTeacher(Auth::user()->id);
-        
+
         if(!empty($request->get('exam_id')) && !empty($request->get('class_id')))
         {
             $data['getSubject'] = ExamScheduleModel::getSubject($request->get('exam_id'), $request->get('class_id'));
 
             $data['getStudent'] = User::getStudentClass($request->get('class_id'));
         }
-        
+
         $data['header_title'] = "Marks Register";
-        return view('teacher.marks_register',$data);   
+        return view('teacher.marks_register',$data);
     }
 
     public function submit_marks_register(Request $request)
@@ -211,7 +212,7 @@ class ExaminationsController extends Controller
         $valiation = 0;
         if(!empty($request->mark))
         {
-            foreach ($request->mark as $mark) 
+            foreach ($request->mark as $mark)
             {
                 $getExamSchedule = ExamScheduleModel::getSingle($mark['id']);
                 $full_marks = $getExamSchedule->full_marks;
@@ -238,7 +239,7 @@ class ExaminationsController extends Controller
                         $save               = new MarksRegisterModel;
                         $save->created_by   = Auth::user()->id;
                     }
-                    
+
                     $save->student_id   = $request->student_id;
                     $save->exam_id      = $request->exam_id;
                     $save->class_id     = $request->class_id;
@@ -248,7 +249,7 @@ class ExaminationsController extends Controller
                     $save->test_work    = $test_work;
                     $save->exam         = $exam;
                     $save->full_marks    = $full_marks;
-                    $save->passing_mark  = $passing_mark;                
+                    $save->passing_mark  = $passing_mark;
                     $save->save();
                 }
                 else
@@ -260,13 +261,13 @@ class ExaminationsController extends Controller
 
         if($valiation == 0)
         {
-            $json['message'] = "Mark Register successfully saved";    
+            $json['message'] = "Mark Register successfully saved";
         }
         else
         {
             $json['message'] = "Mark Register successfully saved. Some Subject mark greather than full mark";
         }
-        
+
         echo json_encode($json);
     }
 
@@ -298,7 +299,7 @@ class ExaminationsController extends Controller
                 $save               = new MarksRegisterModel;
                 $save->created_by   = Auth::user()->id;
             }
-            
+
             $save->student_id   = $request->student_id;
             $save->exam_id      = $request->exam_id;
             $save->class_id     = $request->class_id;
@@ -306,18 +307,18 @@ class ExaminationsController extends Controller
             $save->class_work   = $class_work;
             $save->home_work    = $home_work;
             $save->test_work    = $test_work;
-            $save->exam         = $exam;    
+            $save->exam         = $exam;
             $save->full_marks    = $getExamSchedule->full_marks;
-            $save->passing_mark  = $getExamSchedule->passing_mark;           
+            $save->passing_mark  = $getExamSchedule->passing_mark;
             $save->save();
 
-            $json['message'] = "Mark Register successfully saved";   
+            $json['message'] = "Mark Register successfully saved";
         }
         else
         {
-            $json['message'] = "Your total mark greather than full mark";      
+            $json['message'] = "Your total mark greather than full mark";
         }
-       
+
         echo json_encode($json);
 
     }
@@ -327,13 +328,13 @@ class ExaminationsController extends Controller
     {
         $data['getRecord'] = MarksGradeModel::getRecord();
         $data['header_title'] = "Marks Grade";
-        return view('admin.examinations.marks_grade.list',$data);   
+        return view('admin.examinations.marks_grade.list',$data);
     }
 
     public function marks_grade_add()
     {
         $data['header_title'] = "Add New Marks Grade";
-        return view('admin.examinations.marks_grade.add',$data);   
+        return view('admin.examinations.marks_grade.add',$data);
     }
 
     public function marks_grade_insert(Request $request)
@@ -352,7 +353,7 @@ class ExaminationsController extends Controller
     {
         $data['getRecord'] = MarksGradeModel::getSingle($id);
         $data['header_title'] = "Edit Marks Grade";
-        return view('admin.examinations.marks_grade.edit',$data);   
+        return view('admin.examinations.marks_grade.edit',$data);
     }
 
     public function marks_grade_update($id, Request $request)
@@ -371,11 +372,11 @@ class ExaminationsController extends Controller
         $mark = MarksGradeModel::getSingle($id);
         $mark->delete();
 
-        return redirect('admin/examinations/marks_grade')->with('success', "Marks Grade successfully deleted");   
+        return redirect('admin/examinations/marks_grade')->with('success', "Marks Grade successfully deleted");
     }
 
     // student side
-    
+
     public function MyExamTimetable(Request $request)
     {
         $class_id = Auth::user()->class_id;
@@ -407,7 +408,7 @@ class ExaminationsController extends Controller
         $data['getRecord'] = $result;
 
         $data['header_title'] = "My Exam Timetable";
-        return view('student.my_exam_timetable',$data);   
+        return view('student.my_exam_timetable',$data);
     }
 
 
@@ -444,12 +445,12 @@ class ExaminationsController extends Controller
 
         $data['getRecord'] = $result;
         $data['header_title'] = "My Exam Result";
-        return view('student.my_exam_result',$data);  
+        return view('student.my_exam_result',$data);
     }
 
 
     public function myExamResultPrint(Request $request)
-    {   
+    {
         $exam_id = $request->exam_id;
         $student_id = $request->student_id;
 
@@ -459,7 +460,7 @@ class ExaminationsController extends Controller
         $data['getClass'] = MarksRegisterModel::getClass($exam_id, $student_id);
 
         $data['getSetting'] = SettingModel::getSingle();
-        
+
         $getExamSubject = MarksRegisterModel::getExamSubject($exam_id, $student_id);
 
         $dataSubject = array();
@@ -481,7 +482,7 @@ class ExaminationsController extends Controller
 
         $data['getExamMark'] = $dataSubject;
 
-        return view('exam_result_print', $data); 
+        return view('exam_result_print', $data);
     }
 
     // teacher side work
@@ -528,7 +529,7 @@ class ExaminationsController extends Controller
         $data['getRecord'] = $result;
 
         $data['header_title'] = "My Exam Timetable";
-        return view('teacher.my_exam_timetable',$data);   
+        return view('teacher.my_exam_timetable',$data);
     }
 
 
@@ -568,7 +569,7 @@ class ExaminationsController extends Controller
         $data['getRecord'] = $result;
         $data['getStudent'] = $getStudent;
         $data['header_title'] = "Exam Timetable";
-        return view('parent.my_exam_timetable',$data); 
+        return view('parent.my_exam_timetable',$data);
     }
 
 
@@ -605,9 +606,9 @@ class ExaminationsController extends Controller
 
         $data['getRecord'] = $result;
         $data['header_title'] = "My Exam Result";
-        return view('parent.my_exam_result',$data);  
+        return view('parent.my_exam_result',$data);
     }
 
-    
-    
+
+
 }

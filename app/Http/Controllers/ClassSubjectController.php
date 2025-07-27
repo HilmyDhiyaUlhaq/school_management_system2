@@ -30,7 +30,7 @@ class ClassSubjectController extends Controller
     {
         if(!empty($request->subject_id))
         {
-            foreach ($request->subject_id as $subject_id) 
+            foreach ($request->subject_id as $subject_id)
             {
                 $getAlreadyFirst = ClassSubjectModel::getAlreadyFirst($request->class_id, $subject_id);
                 if(!empty($getAlreadyFirst))
@@ -45,7 +45,7 @@ class ClassSubjectController extends Controller
                     $save->subject_id = $subject_id;
                     $save->status = $request->status;
                     $save->created_by = Auth::user()->id;
-                    $save->save();    
+                    $save->save();
                 }
             }
 
@@ -67,13 +67,13 @@ class ClassSubjectController extends Controller
             $data['getClass'] = ClassModel::getClass();
             $data['getSubject'] = SubjectModel::getSubject();
             $data['header_title'] = "Edit Assign Subject";
-            return view('admin.assign_subject.edit', $data);    
+            return view('admin.assign_subject.edit', $data);
         }
         else
         {
             abort(404);
         }
-        
+
     }
 
     public function update(Request $request)
@@ -82,7 +82,7 @@ class ClassSubjectController extends Controller
 
         if(!empty($request->subject_id))
         {
-            foreach ($request->subject_id as $subject_id) 
+            foreach ($request->subject_id as $subject_id)
             {
                 $getAlreadyFirst = ClassSubjectModel::getAlreadyFirst($request->class_id, $subject_id);
                 if(!empty($getAlreadyFirst))
@@ -97,9 +97,9 @@ class ClassSubjectController extends Controller
                     $save->subject_id = $subject_id;
                     $save->status = $request->status;
                     $save->created_by = Auth::user()->id;
-                    $save->save();    
+                    $save->save();
                 }
-            }          
+            }
         }
 
         return redirect('admin/assign_subject/list')->with('success', "Subject Sucessfully Assign to Class");
@@ -107,11 +107,20 @@ class ClassSubjectController extends Controller
 
     public function delete($id)
     {
-        $save = ClassSubjectModel::getSingle($id);
-        $save->is_delete = 1;
-        $save->save();
+        try {
+            $save = ClassSubjectModel::getSingle($id);
 
-        return redirect()->back()->with('success', 'Record Successfully Deleted');
+            if (!empty($save)) {
+                // Hard delete
+                $save->delete();
+
+                return redirect()->back()->with('success', "Subject berhasil dihapus permanen");
+            } else {
+                return redirect()->back()->with('error', "Subject tidak ditemukan");
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
     public function edit_single($id)
@@ -123,7 +132,7 @@ class ClassSubjectController extends Controller
             $data['getClass'] = ClassModel::getClass();
             $data['getSubject'] = SubjectModel::getSubject();
             $data['header_title'] = "Edit Assign Subject";
-            return view('admin.assign_subject.edit_single', $data);    
+            return view('admin.assign_subject.edit_single', $data);
         }
         else
         {
@@ -148,10 +157,10 @@ class ClassSubjectController extends Controller
                 $save->class_id = $request->class_id;
                 $save->subject_id = $request->subject_id;
                 $save->status = $request->status;
-                $save->save();    
+                $save->save();
 
                 return redirect('admin/assign_subject/list')->with('success', "Subject Sucessfully Assign to Class");
-            }                    
+            }
     }
 
 

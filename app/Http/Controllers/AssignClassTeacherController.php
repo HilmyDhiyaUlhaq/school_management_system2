@@ -13,7 +13,7 @@ class AssignClassTeacherController extends Controller
 {
     public function list(Request $request)
     {
-        
+
         $data['getRecord'] = AssignClassTeacherModel::getRecord();
 
         $data['header_title'] = "Assign Class Teacher";
@@ -24,7 +24,7 @@ class AssignClassTeacherController extends Controller
     {
         $data['getClass'] = ClassModel::getClass();
         $data['getTeacher'] = User::getTeacherClass();
-        
+
         $data['header_title'] = "Add Assign Class Teacher";
         return view('admin.assign_class_teacher.add', $data);
     }
@@ -34,7 +34,7 @@ class AssignClassTeacherController extends Controller
 
         if(!empty($request->teacher_id))
         {
-            foreach ($request->teacher_id as $teacher_id) 
+            foreach ($request->teacher_id as $teacher_id)
             {
                 $getAlreadyFirst = AssignClassTeacherModel::getAlreadyFirst($request->class_id, $teacher_id);
                 if(!empty($getAlreadyFirst))
@@ -49,7 +49,7 @@ class AssignClassTeacherController extends Controller
                     $save->teacher_id = $teacher_id;
                     $save->status = $request->status;
                     $save->created_by = Auth::user()->id;
-                    $save->save();    
+                    $save->save();
                 }
             }
 
@@ -59,7 +59,7 @@ class AssignClassTeacherController extends Controller
         {
             return redirect()->back()->with('error', 'Due to some error pls try again');
         }
-        
+
     }
 
 
@@ -73,13 +73,13 @@ class AssignClassTeacherController extends Controller
             $data['getClass'] = ClassModel::getClass();
             $data['getTeacher'] = User::getTeacherClass();
             $data['header_title'] = "Edit Assign Class Teacher";
-            return view('admin.assign_class_teacher.edit', $data);    
+            return view('admin.assign_class_teacher.edit', $data);
         }
         else
         {
             abort(404);
         }
-        
+
     }
 
     public function update($id, Request $request)
@@ -89,7 +89,7 @@ class AssignClassTeacherController extends Controller
 
         if(!empty($request->teacher_id))
         {
-            foreach ($request->teacher_id as $teacher_id) 
+            foreach ($request->teacher_id as $teacher_id)
             {
                 $getAlreadyFirst = AssignClassTeacherModel::getAlreadyFirst($request->class_id, $teacher_id);
                 if(!empty($getAlreadyFirst))
@@ -104,9 +104,9 @@ class AssignClassTeacherController extends Controller
                     $save->teacher_id = $teacher_id;
                     $save->status = $request->status;
                     $save->created_by = Auth::user()->id;
-                    $save->save();    
+                    $save->save();
                 }
-            }            
+            }
         }
 
         return redirect('admin/assign_class_teacher/list')->with('success', "Assign Class to Teacher Successfully");
@@ -121,7 +121,7 @@ class AssignClassTeacherController extends Controller
             $data['getClass'] = ClassModel::getClass();
             $data['getTeacher'] = User::getTeacherClass();
             $data['header_title'] = "Edit Assign Class Teacher";
-            return view('admin.assign_class_teacher.edit_single', $data);    
+            return view('admin.assign_class_teacher.edit_single', $data);
         }
         else
         {
@@ -149,19 +149,29 @@ class AssignClassTeacherController extends Controller
                 $save->class_id = $request->class_id;
                 $save->teacher_id = $request->teacher_id;
                 $save->status = $request->status;
-                $save->save();    
+                $save->save();
 
                 return redirect('admin/assign_class_teacher/list')->with('success', "Assign Class to Teacher Successfully Updated");
-            }                    
+            }
     }
 
 
     public function delete($id)
     {
-        $save = AssignClassTeacherModel::getSingle($id);
-        $save->delete();
+        try {
+            $save = AssignClassTeacherModel::getSingle($id);
 
-        return redirect()->back()->with('success', "Assign Class to Teacher Successfully Deleted");
+            if (!empty($save)) {
+                // Hard delete
+                $save->delete();
+
+                return redirect()->back()->with('success', "Assign Class Teacher berhasil dihapus permanen");
+            } else {
+                return redirect()->back()->with('error', "Data tidak ditemukan");
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
 
@@ -171,7 +181,7 @@ class AssignClassTeacherController extends Controller
     {
         $data['getRecord'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
         $data['header_title'] = "My Class & Subject";
-        return view('teacher.my_class_subject', $data); 
+        return view('teacher.my_class_subject', $data);
     }
 
 }

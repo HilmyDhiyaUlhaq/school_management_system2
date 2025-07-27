@@ -705,8 +705,8 @@ CREATE TABLE `users` (
   `class_id` int(11) DEFAULT NULL,
   `gender` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `caste` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `religion` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+
+
   `mobile_number` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admission_date` date DEFAULT NULL,
   `profile_pic` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -731,7 +731,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `parent_id`, `name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `admission_number`, `roll_number`, `class_id`, `gender`, `date_of_birth`, `caste`, `religion`, `mobile_number`, `admission_date`, `profile_pic`, `blood_group`, `height`, `weight`, `occupation`, `marital_status`, `address`, `permanent_address`, `qualification`, `work_experience`, `note`, `user_type`, `is_delete`, `status`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`id`, `parent_id`, `name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `admission_number`, `roll_number`, `class_id`, `gender`, `date_of_birth`, `mobile_number`, `admission_date`, `profile_pic`, `blood_group`, `height`, `weight`, `occupation`, `marital_status`, `address`, `permanent_address`, `qualification`, `work_experience`, `note`, `user_type`, `is_delete`, `status`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'Admin', NULL, 'admin@gmail.com', NULL, '$2y$10$NVyTxYXIPnXeYi4GckzmPeHwipDph/OQArrAF.HbeVnmosG0m1yV.', 'wKsiU16IP92qYKok7GQduUqDxPLFy6jJZbwQOTdhwUwJgfy7exFOBSmJ5Xcj', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '20230707030514ogeefhmwghlna3rown0n.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2023-03-23 02:46:09', '2023-08-20 21:44:15'),
 (3, NULL, 'Teacher', '56', 'teacher@test.com', NULL, '$2y$10$hbU2a9ziRFjQyomwypBbKuSlGoQYKWihaZikcOy838wDPJvMo6iim', NULL, NULL, NULL, NULL, 'Male', '2011-01-01', NULL, NULL, '1234567891', '2020-01-01', NULL, NULL, NULL, NULL, NULL, 'test', 'test', 'test', 'test', 'test', 'test', 2, 0, 0, '2023-03-23 02:46:09', '2023-04-19 05:45:25'),
 (4, NULL, 'Student', NULL, 'student@gmail.com', NULL, '$2y$10$XBPChms8IYS8RenF9.CpH.Si2uJ9hfrt0suyFfA4hgYdEliDHml1e', 'ggMgDrFa96znYxEp9yISt3txCaKNb4crghjD708dKhZYOHjxEnDTkqLgheP2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 0, 0, '2023-03-23 02:46:09', '2023-03-30 22:08:08'),

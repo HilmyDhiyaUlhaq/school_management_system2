@@ -26,9 +26,9 @@
       <a href="" class="h1"><b>Reset Password</b></a>
     </div>
     <div class="card-body">
-     
+
       @include('_message')
-      
+
       <form action="" method="post">
         {{ csrf_field() }}
         <div class="input-group mb-3">
@@ -41,31 +41,31 @@
         </div>
 
          <div class="input-group mb-3">
-          <input type="password" class="form-control" required  name="cpassword" placeholder="Confrim Password">
+          <input type="password" class="form-control" required  name="cpassword" placeholder="Konfirmasi Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
-        
+
         <div class="row">
-          
+
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Reset</button>
           </div>
-          
+
         </div>
       </form>
 
-    
+
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
         <br />
         <a href="{{ url('') }}">Login</a>
       </p>
-    
+
     </div>
     <!-- /.card-body -->
   </div>

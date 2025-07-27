@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ClassModel;
 
 class ClassController extends Controller
@@ -18,17 +18,29 @@ class ClassController extends Controller
 
     public function add()
     {
-        $data['header_title'] = "Add New Class";
+        $data['header_title'] = "Tambahkan Kelas Baru";
         return view('admin.class.add', $data);
     }
 
     public function insert(Request $request)
     {
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'amount' => 'required|integer|min:0',
+            'status' => 'required|in:0,1'
+        ]);
+
+        // Pastikan user ter-autentikasi
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please login first');
+        }
+
         $save = new ClassModel;
-        $save->name = $request->name;
-        $save->amount = $request->amount;
-        $save->status = $request->status;
-        $save->created_by = Auth::user()->id;
+        $save->name = $request->input('name');
+        $save->amount = $request->input('amount');
+        $save->status = $request->input('status');
+        $save->created_by = Auth::user()->getKey();
         $save->save();
 
         return redirect('admin/class/list')->with('success', "Class Successfully Created");
@@ -37,23 +49,32 @@ class ClassController extends Controller
     public function edit($id)
     {
         $data['getRecord'] = ClassModel::getSingle($id);
-        if(!empty($data['getRecord']))
-        {
+        if (!empty($data['getRecord'])) {
             $data['header_title'] = "Edit Class";
-            return view('admin.class.edit', $data);    
-        }
-        else
-        {
+            return view('admin.class.edit', $data);
+        } else {
             abort(404);
-        }        
+        }
     }
 
     public function update($id, Request $request)
     {
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'amount' => 'required|integer|min:0',
+            'status' => 'required|in:0,1'
+        ]);
+
         $save = ClassModel::getSingle($id);
-        $save->name = $request->name;
-        $save->amount = $request->amount;
-        $save->status = $request->status;
+
+        if (!$save) {
+            return redirect()->back()->with('error', 'Class not found');
+        }
+
+        $save->name = $request->input('name');
+        $save->amount = $request->input('amount');
+        $save->status = $request->input('status');
         $save->save();
 
         return redirect('admin/class/list')->with('success', "Class Successfully Updated");
@@ -61,10 +82,19 @@ class ClassController extends Controller
 
     public function delete($id)
     {
-        $save = ClassModel::getSingle($id);
-        $save->is_delete = 1;
-        $save->save();
+        try {
+            $save = ClassModel::getSingle($id);
 
-        return redirect()->back()->with('success', "Class Successfully Deleted");
+            if (!empty($save)) {
+
+                $save->delete();
+
+                return redirect()->back()->with('success', "Class berhasil dihapus permanen");
+            } else {
+                return redirect()->back()->with('error', "Class tidak ditemukan");
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 }

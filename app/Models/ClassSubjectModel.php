@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
+use App\Traits\AutoIdManager;
 class ClassSubjectModel extends Model
 {
-    use HasFactory;
+    use HasFactory, AutoIdManager;
 
      protected $table = 'class_subject';
 
@@ -44,7 +45,7 @@ class ClassSubjectModel extends Model
                     ->paginate(100);
 
         return $return;
-                    
+
      }
 
      static public function MySubject($class_id)
@@ -91,5 +92,5 @@ class ClassSubjectModel extends Model
         return self::where('class_id', '=', $class_id)->delete();
      }
 
-     
+
 }

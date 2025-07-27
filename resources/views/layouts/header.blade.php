@@ -32,7 +32,7 @@
       @if(!empty($getHeaderSetting->getLogo()))
        <img src="{{ $getHeaderSetting->getLogo() }}" style="width: auto;height: 60px;border-radius: 5px;">
       @else
-        <span class="brand-text font-weight-light" style="font-weight: bold !important;font-size: 20px;">Sekolah</span>
+        <span class="brand-text font-weight-light" style="font-weight: bold !important;font-size: 20px;">ALSID</span>
       @endif
     </a>
 
@@ -196,7 +196,7 @@
           <li class="nav-item">
             <a href="{{ url('admin/examinations/marks_register') }}" class="nav-link @if(Request::segment(3) == 'marks_register') active @endif">
               <i class="far fa-circle nav-icon"></i>
-              <p>Daftar Tanda</p>
+              <p>Memberi Nilai </p>
             </a>
           </li>
 
@@ -362,7 +362,7 @@
         <a href="{{ url('teacher/marks_register') }}" class="nav-link @if(Request::segment(2) == 'marks_register') active @endif">
           <i class="nav-icon fas fa-clipboard-list"></i>
           <p>
-            Daftar Tanda
+            Memberi Nilai
           </p>
         </a>
       </li>

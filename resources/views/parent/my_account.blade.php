@@ -31,13 +31,13 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label>Nama Depan <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control" value="{{ old('name', $getRecord->name) }}" name="name" required placeholder="First Name">
+                      <input type="text" class="form-control" value="{{ old('name', $getRecord->name) }}" name="name" required placeholder="Nama Depan">
                       <div style="color:red">{{ $errors->first('name') }}</div>
                     </div>
 
                     <div class="form-group col-md-6">
                       <label>Nama Akhir <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control" value="{{ old('last_name', $getRecord->last_name) }}" name="last_name" required placeholder="Last Name">
+                      <input type="text" class="form-control" value="{{ old('last_name', $getRecord->last_name) }}" name="last_name" required placeholder="Nama Belakang">
                       <div style="color:red">{{ $errors->first('last_name') }}</div>
                     </div>
 
@@ -60,20 +60,20 @@
 
                      <div class="form-group col-md-6">
                       <label>Pekerjaan <span style="color: red;"></span></label>
-                      <input type="text" class="form-control" value="{{ old('occupation', $getRecord->occupation) }}" name="occupation"  placeholder="Occupation">
+                      <input type="text" class="form-control" value="{{ old('occupation', $getRecord->occupation) }}" name="occupation"  placeholder="Pekerjaan">
                       <div style="color:red">{{ $errors->first('occupation') }}</div>
                     </div>
 
 
                     <div class="form-group col-md-6">
                       <label>Nomor HP <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control" required value="{{ old('mobile_number', $getRecord->mobile_number) }}" name="mobile_number"  placeholder="Mobile Number">
+                      <input type="text" class="form-control" required value="{{ old('mobile_number', $getRecord->mobile_number) }}" name="mobile_number"  placeholder="Nomor HP">
                       <div style="color:red">{{ $errors->first('mobile_number') }}</div>
                     </div>
 
                      <div class="form-group col-md-6">
                       <label>Alamat <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control" required value="{{ old('address', $getRecord->address) }}" name="address"  placeholder="Address">
+                      <input type="text" class="form-control" required value="{{ old('address', $getRecord->address) }}" name="address"  placeholder="Alamat">
                       <div style="color:red">{{ $errors->first('address') }}</div>
                     </div>
 

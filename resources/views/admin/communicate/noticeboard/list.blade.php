@@ -108,7 +108,7 @@
                   <tbody>
                     @forelse($getRecord as $value)
                         <tr>
-                          <td>{{ $value->id }}</td>
+                          <td>{{ $loop->iteration }}</td>
                           <td>{{ $value->title }}</td>
                           <td>{{ date('d-m-Y', strtotime($value->notice_date)) }}</td>
                           <td>{{ date('d-m-Y', strtotime($value->publish_date)) }}</td>

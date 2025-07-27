@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
+use App\Traits\AutoIdManager;
+
 class AssignClassTeacherModel extends Model
 {
-    use HasFactory;
+    use HasFactory, AutoIdManager;
 
     protected $table = 'assign_class_teacher';
 
@@ -50,7 +52,7 @@ class AssignClassTeacherModel extends Model
                     ->paginate(100);
 
         return $return;
-                    
+
      }
 
     static public function getMyClassSubjectCount($teacher_id)
@@ -58,13 +60,13 @@ class AssignClassTeacherModel extends Model
            return AssignClassTeacherModel::select('assign_class_teacher.id')
                     ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
                     ->join('class_subject', 'class_subject.class_id', '=', 'class.id')
-                    ->join('subject', 'subject.id', '=', 'class_subject.subject_id')                    
+                    ->join('subject', 'subject.id', '=', 'class_subject.subject_id')
                     ->where('assign_class_teacher.is_delete', '=', 0)
                     ->where('assign_class_teacher.status', '=', 0)
                     ->where('subject.status', '=', 0)
                     ->where('subject.is_delete', '=', 0)
                     ->where('class_subject.status', '=', 0)
-                    ->where('class_subject.is_delete', '=', 0)                    
+                    ->where('class_subject.is_delete', '=', 0)
                     ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
                     ->count();
     }
@@ -86,13 +88,13 @@ class AssignClassTeacherModel extends Model
            return AssignClassTeacherModel::select('assign_class_teacher.*', 'class.name as class_name', 'subject.name as subject_name', 'subject.type as subject_type', 'class.id as class_id', 'subject.id as subject_id')
                     ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
                     ->join('class_subject', 'class_subject.class_id', '=', 'class.id')
-                    ->join('subject', 'subject.id', '=', 'class_subject.subject_id')                    
+                    ->join('subject', 'subject.id', '=', 'class_subject.subject_id')
                     ->where('assign_class_teacher.is_delete', '=', 0)
                     ->where('assign_class_teacher.status', '=', 0)
                     ->where('subject.status', '=', 0)
                     ->where('subject.is_delete', '=', 0)
                     ->where('class_subject.status', '=', 0)
-                    ->where('class_subject.is_delete', '=', 0)                    
+                    ->where('class_subject.is_delete', '=', 0)
                     ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
                     ->get();
      }

@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\AutoIdManager;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class NoticeBoardMessageModel extends Model
 {
+    use AutoIdManager;
+
     use HasFactory;
 
     protected $table = 'notice_board_message';

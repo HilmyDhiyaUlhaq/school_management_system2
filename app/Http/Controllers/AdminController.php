@@ -33,18 +33,18 @@ class AdminController extends Controller
         $user->name = trim($request->name);
         $user->email = trim($request->email);
         $user->password = Hash::make($request->password);
-        $user->user_type = 1;     
+        $user->user_type = 1;
 
         if(!empty($request->file('profile_pic')))
         {
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
-            $file = $request->file('profile_pic');   
+            $file = $request->file('profile_pic');
             $randomStr = date('Ymdhis').Str::random(20);
             $filename = strtolower($randomStr).'.'.$ext;
             $file->move('upload/profile/', $filename);
-            
-            $user->profile_pic = $filename;            
-        }   
+
+            $user->profile_pic = $filename;
+        }
 
         $user->save();
 
@@ -58,13 +58,13 @@ class AdminController extends Controller
         if(!empty($data['getRecord']))
         {
             $data['header_title'] = "Edit Admin";
-            return view('admin.admin.edit',$data);    
+            return view('admin.admin.edit',$data);
         }
         else
         {
             abort(404);
         }
-        
+
     }
 
     public function update($id, Request $request)
@@ -79,7 +79,7 @@ class AdminController extends Controller
         $user->email = trim($request->email);
         if(!empty($request->password))
         {
-            $user->password = Hash::make($request->password);    
+            $user->password = Hash::make($request->password);
         }
 
         if(!empty($request->file('profile_pic')))
@@ -90,13 +90,13 @@ class AdminController extends Controller
             }
 
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
-            $file = $request->file('profile_pic');   
+            $file = $request->file('profile_pic');
             $randomStr = date('Ymdhis').Str::random(20);
             $filename = strtolower($randomStr).'.'.$ext;
             $file->move('upload/profile/', $filename);
-            $user->profile_pic = $filename;            
+            $user->profile_pic = $filename;
         }
-        
+
         $user->save();
 
         return redirect('admin/admin/list')->with('success', "Admin successfully updated");
@@ -105,13 +105,21 @@ class AdminController extends Controller
 
     public function delete($id)
     {
-        $user = User::getSingle($id);
-        $user->is_delete = 1;
-        $user->save();
+        try {
+            $getRecord = User::getSingle($id);
 
-        return redirect('admin/admin/list')->with('success', "Admin successfully deleted");
+            if (!empty($getRecord)) {
+                // Hard delete
+                $getRecord->delete();
+
+                return redirect()->back()->with('success', "Admin berhasil dihapus permanen");
+            } else {
+                return redirect()->back()->with('error', "Admin tidak ditemukan");
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
-    
 
-    
+
 }

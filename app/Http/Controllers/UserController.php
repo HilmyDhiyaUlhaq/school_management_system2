@@ -16,40 +16,40 @@ class UserController extends Controller
     {
         $data['getRecord'] = SettingModel::getSingle();
         $data['header_title'] = "Setting";
-        return view('admin.setting', $data);    
+        return view('admin.setting', $data);
     }
 
     public function UpdateSetting(Request $request)
     {
         $setting = SettingModel::getSingle();
-        $setting->paypal_email = trim($request->paypal_email);
-        $setting->stripe_key = trim($request->stripe_key);
-        $setting->stripe_secret = trim($request->stripe_secret);
+        $setting->paypal_email = trim($request->input('paypal_email'));
+        $setting->stripe_key = trim($request->input('stripe_key'));
+        $setting->stripe_secret = trim($request->input('stripe_secret'));
 
-        $setting->school_name = trim($request->school_name);
-        $setting->exam_description = trim($request->exam_description);
+        $setting->school_name = trim($request->input('school_name'));
+        $setting->exam_description = trim($request->input('exam_description'));
 
         if(!empty($request->file('logo')))
         {
             $ext = $request->file('logo')->getClientOriginalExtension();
-            $file = $request->file('logo');   
+            $file = $request->file('logo');
             $randomStr = date('Ymdhis').Str::random(10);
             $filename = strtolower($randomStr).'.'.$ext;
             $file->move('upload/setting/', $filename);
-            
-            $setting->logo = $filename;            
+
+            $setting->logo = $filename;
         }
 
 
         if(!empty($request->file('fevicon_icon')))
         {
             $ext = $request->file('fevicon_icon')->getClientOriginalExtension();
-            $file = $request->file('fevicon_icon');   
+            $file = $request->file('fevicon_icon');
             $randomStr = date('Ymdhis').Str::random(10);
             $fevicon_icon = strtolower($randomStr).'.'.$ext;
             $file->move('upload/setting/', $fevicon_icon);
-           
-            $setting->fevicon_icon = $fevicon_icon;            
+
+            $setting->fevicon_icon = $fevicon_icon;
         }
 
 
@@ -61,81 +61,84 @@ class UserController extends Controller
 
     public function MyAccount()
     {
-        $data['getRecord'] = User::getSingle(Auth::user()->id);
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu');
+        }
+
+        $user = auth()->user();
+        $data['getRecord'] = User::getSingle(auth()->id());
         $data['header_title'] = "My Account";
-        if(Auth::user()->user_type == 1)
-        {
-            return view('admin.my_account', $data);    
+
+        $userType = $user->user_type ?? null;
+
+        switch ($userType) {
+            case 1:
+                return view('admin.my_account', $data);
+            case 2:
+                return view('teacher.my_account', $data);
+            case 3:
+                return view('student.my_account', $data);
+            case 4:
+                return view('parent.my_account', $data);
+            default:
+                abort(403, 'Tipe user tidak valid');
         }
-        else if(Auth::user()->user_type == 2)
-        {
-            return view('teacher.my_account', $data);    
-        }
-        else if(Auth::user()->user_type == 3)
-        {
-            return view('student.my_account', $data);    
-        }
-        else if(Auth::user()->user_type == 4)
-        {
-            return view('parent.my_account', $data);    
-        }
-        
     }
 
     public function UpdateMyAccountAdmin(Request $request)
     {
-        $id = Auth::user()->id;        
+        $id = Auth::user()->id;
         request()->validate([
-            'email' => 'required|email|unique:users,email,'.$id           
+            'email' => 'required|email|unique:users,email,'.$id
         ]);
 
         $admin = User::getSingle($id);
-        $admin->name = trim($request->name);
-        $admin->email = trim($request->email);
+        $admin->name = trim($request->input('name'));
+        $admin->email = trim($request->input('email'));
         $admin->save();
-        
+
         return redirect()->back()->with('success', "Account Successfully Updated");
     }
 
     public function UpdateMyAccount(Request $request)
     {
         $id = Auth::user()->id;
-        
+
         request()->validate([
             'email' => 'required|email|unique:users,email,'.$id,
-            'mobile_number' => 'max:15|min:8',       
-            'marital_status' => 'max:50',                                       
+            'mobile_number' => 'max:15|min:8',
+            'marital_status' => 'max:50',
         ]);
 
 
         $teacher = User::getSingle($id);
-        $teacher->name = trim($request->name);
-        $teacher->last_name = trim($request->last_name);
-        $teacher->gender = trim($request->gender);
+        $teacher->name = trim($request->input('name'));
+        $teacher->last_name = trim($request->input('last_name'));
+        $teacher->gender = trim($request->input('gender'));
 
         if(!empty($request->date_of_birth))
         {
-            $teacher->date_of_birth = trim($request->date_of_birth);    
+            $teacher->date_of_birth = trim($request->input('date_of_birth'));
         }
 
         if(!empty($request->file('profile_pic')))
         {
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
-            $file = $request->file('profile_pic');   
+            $file = $request->file('profile_pic');
             $randomStr = date('Ymdhis').Str::random(20);
             $filename = strtolower($randomStr).'.'.$ext;
             $file->move('upload/profile/', $filename);
-            
-            $teacher->profile_pic = $filename;            
+
+            $teacher->profile_pic = $filename;
         }
 
-        $teacher->marital_status = trim($request->marital_status);
-        $teacher->address = trim($request->address);
-        $teacher->mobile_number = trim($request->mobile_number);
-        $teacher->permanent_address = trim($request->permanent_address);
-        $teacher->qualification = trim($request->qualification);
-        $teacher->work_experience = trim($request->work_experience);
-        $teacher->email = trim($request->email);
+        $teacher->marital_status = trim($request->input('marital_status'));
+        $teacher->address = trim($request->input('address'));
+        $teacher->mobile_number = trim($request->input('mobile_number'));
+        $teacher->permanent_address = trim($request->input('permanent_address'));
+        $teacher->qualification = trim($request->input('qualification'));
+        $teacher->work_experience = trim($request->input('work_experience'));
+        $teacher->email = trim($request->input('email'));
         $teacher->save();
 
         return redirect()->back()->with('success', "Account Successfully Updated");
@@ -144,51 +147,49 @@ class UserController extends Controller
     public function UpdateMyAccountStudent(Request $request)
     {
         $id = Auth::user()->id;
-        
+
         request()->validate([
             'email' => 'required|email|unique:users,email,'.$id,
             'weight' => 'max:10',
             'blood_group' => 'max:10',
-            'mobile_number' => 'max:15|min:8',            
-            'caste' => 'max:50',
-            'religion' => 'max:50',
-            'height' => 'max:10'            
+            'mobile_number' => 'max:15|min:8',
+            'height' => 'max:10'
         ]);
 
-    
+
 
         $student = User::getSingle($id);;
-        $student->name = trim($request->name);
-        $student->last_name = trim($request->last_name);
-        $student->gender = trim($request->gender);
+        $student->name = trim($request->input('name'));
+        $student->last_name = trim($request->input('last_name'));
+        $student->gender = trim($request->input('gender'));
 
         if(!empty($request->date_of_birth))
         {
-            $student->date_of_birth = trim($request->date_of_birth);    
+            $student->date_of_birth = trim($request->input('date_of_birth'));
         }
 
         if(!empty($request->file('profile_pic')))
         {
             if(!empty($student->getProfile()))
             {
-                unlink('upload/profile/'.$student->profile_pic);
+                unlink('upload/profile/'.$student->input('profile_pic'));
             }
 
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
-            $file = $request->file('profile_pic');   
+            $file = $request->file('profile_pic');
             $randomStr = date('Ymdhis').Str::random(20);
             $filename = strtolower($randomStr).'.'.$ext;
             $file->move('upload/profile/', $filename);
-            $student->profile_pic = $filename;            
+            $student->profile_pic = $filename;
         }
 
-        $student->caste = trim($request->caste);
-        $student->religion = trim($request->religion);
-        $student->mobile_number = trim($request->mobile_number);
-        $student->blood_group = trim($request->blood_group);
-        $student->height = trim($request->height);
-        $student->weight = trim($request->weight);
-        $student->email = trim($request->email);
+
+
+        $student->mobile_number = trim($request->input('mobile_number'));
+        $student->blood_group = trim($request->input('blood_group'));
+        $student->height = trim($request->input('height'));
+        $student->weight = trim($request->input('weight'));
+        $student->email = trim($request->input('email'));
         $student->save();
 
         return redirect()->back()->with('success', "Account Successfully Updated");
@@ -197,22 +198,22 @@ class UserController extends Controller
     public function UpdateMyAccountParent(Request $request)
     {
         $id = Auth::user()->id;
-        
+
         request()->validate([
             'email' => 'required|email|unique:users,email,'.$id,
-            'mobile_number' => 'max:15|min:8',            
+            'mobile_number' => 'max:15|min:8',
             'address' => 'max:255',
-            'occupation' => 'max:255'         
+            'occupation' => 'max:255'
         ]);
 
 
         $parent = User::getSingle($id);;
 
-        $parent->name = trim($request->name);
-        $parent->last_name = trim($request->last_name);
-        $parent->gender = trim($request->gender);
-        $parent->occupation = trim($request->occupation);
-        $parent->address = trim($request->address);
+        $parent->name = trim($request->input('name'));
+        $parent->last_name = trim($request->input('last_name'));
+        $parent->gender = trim($request->input('gender'));
+        $parent->occupation = trim($request->input('occupation'));
+        $parent->address = trim($request->input('address'));
 
         if(!empty($request->file('profile_pic')))
         {
@@ -222,16 +223,16 @@ class UserController extends Controller
             }
 
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
-            $file = $request->file('profile_pic');   
+            $file = $request->file('profile_pic');
             $randomStr = date('Ymdhis').Str::random(20);
             $filename = strtolower($randomStr).'.'.$ext;
             $file->move('upload/profile/', $filename);
-            
-            $parent->profile_pic = $filename;            
+
+            $parent->profile_pic = $filename;
         }
 
-        $parent->mobile_number = trim($request->mobile_number);
-        $parent->email = trim($request->email);
+        $parent->mobile_number = trim($request->input('mobile_number'));
+        $parent->email = trim($request->input('email'));
         $parent->save();
 
         return redirect()->back()->with('success', "Account Successfully Updated");
@@ -248,9 +249,9 @@ class UserController extends Controller
     public function update_change_password(Request $request)
     {
         $user = User::getSingle(Auth::user()->id);
-        if(Hash::check($request->old_password, $user->password))
+        if(Hash::check($request->input('old_password'), $user->password))
         {
-            $user->password = Hash::make($request->new_password);
+            $user->password = Hash::make($request->input('new_password'));
             $user->save();
             return redirect()->back()->with('success', "Password successfully updated");
         }

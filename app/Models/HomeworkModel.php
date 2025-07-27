@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
+use App\Traits\AutoIdManager;
 class HomeworkModel extends Model
 {
-    use HasFactory;
+    use HasFactory, AutoIdManager;
 
     protected $table = 'homework';
 
@@ -67,7 +68,7 @@ class HomeworkModel extends Model
                     $return = $return->whereDate('homework.created_at', '<=', Request::get('to_created_date'));
                 }
 
-                
+
 
                 $return = $return->orderBy('homework.id', 'desc')
                 ->paginate(20);
@@ -128,7 +129,7 @@ class HomeworkModel extends Model
                     $return = $return->whereDate('homework.created_at', '<=', Request::get('to_created_date'));
                 }
 
-                
+
 
                 $return = $return->orderBy('homework.id', 'desc')
                 ->paginate(20);
@@ -187,7 +188,7 @@ class HomeworkModel extends Model
                     $return = $return->whereDate('homework.created_at', '<=', Request::get('to_created_date'));
                 }
 
-                
+
                 $return = $return->orderBy('homework.id', 'desc')
                 ->paginate(20);
 
@@ -215,7 +216,7 @@ class HomeworkModel extends Model
     }
 
 
-    
+
 
 
     public function getDocument()
@@ -223,7 +224,7 @@ class HomeworkModel extends Model
         if(!empty($this->document_file) && file_exists('upload/homework/'.$this->document_file))
         {
             return url('upload/homework/'.$this->document_file);
-        }   
+        }
         else
         {
             return "";

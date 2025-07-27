@@ -31,7 +31,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label>Jumlah ($)</label>
+                    <label>Jumlah (Rp)</label>
                     <input type="number" class="form-control" name="amount" value="{{ $getRecord->amount }}" required placeholder="Amount">
                   </div>
 

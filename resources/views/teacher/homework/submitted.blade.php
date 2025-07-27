@@ -27,13 +27,13 @@
 
                   <div class="form-group col-md-2">
                     <label>Nama Depan Siswa</label>
-                    <input type="text" class="form-control" name="first_name" value="{{ Request::get('first_name') }}" placeholder="Student First Name" >
+                    <input type="text" class="form-control" name="first_name" value="{{ Request::get('first_name') }}" placeholder="Nama Depan Siswa" >
                   </div>
 
 
                    <div class="form-group col-md-2">
                     <label>Nama Akhir Siswa</label>
-                    <input type="text" class="form-control" name="last_name" value="{{ Request::get('last_name') }}" placeholder="Student Last Name" >
+                    <input type="text" class="form-control" name="last_name" value="{{ Request::get('last_name') }}" placeholder="Nama Belakang Siswa" >
                   </div>
 
 

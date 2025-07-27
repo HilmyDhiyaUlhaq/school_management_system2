@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Log in</title>
  @php
-    $getHeaderSetting = App\Models\SettingModel::getSingle();
+$getHeaderSetting = App\Models\SettingModel::getSingle();
   @endphp
   <link href="{{ $getHeaderSetting->getFevicon() }}" rel="icon" type="image/jpg" />
   <!-- Google Font: Source Sans Pro -->
@@ -19,10 +19,17 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <!-- /.login-logo -->
   <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="" class="h1"><b>Login</b></a>
+    <div class="card-header text-center bg-primary">
+      <!-- Logo Pondok di dalam card header -->
+      <div class="mb-3">
+        <img src="{{ url('public/dist/img/logo-pondok.svg') }}"
+             alt="Logo Pondok"
+             class="img-fluid mb-2"
+             style="max-width: 80px; height: auto;">
+        <h4 class="text-white mb-1"><b>ALSID</b></h4>
+      </div>
+
     </div>
     <div class="card-body">
       <p class="login-box-msg">Masuk Untuk Memulai Sesi Anda </p>
@@ -68,7 +75,15 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="{{ url('forgot-password') }}">Saya Lupa Passwrod Saya</a>
+        <a href="{{ url('forgot-password') }}" class="text-primary">
+          <i class="fas fa-key"></i> Saya Lupa Password Saya
+        </a>
+      </p>
+
+      <p class="mb-1">
+        <a href="http://id-3.hostddns.us:13498" target="_blank" class="text-info">
+          <i class="fas fa-wifi"></i> Setting Wifi
+        </a>
       </p>
 
     </div>

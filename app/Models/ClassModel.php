@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Request;
+use Illuminate\Support\Facades\Request;
+use App\Traits\AutoIdManager;
 
 class ClassModel extends Model
 {
-    use HasFactory;
+    use HasFactory, AutoIdManager;
 
     protected $table = 'class';
 

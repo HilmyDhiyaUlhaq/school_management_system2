@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
+use App\Traits\AutoIdManager;
 class StudentAddFeesModel extends Model
 {
-    use HasFactory;
+    use HasFactory, AutoIdManager;
 
     protected $table = 'student_add_fees';
 
@@ -39,7 +40,7 @@ class StudentAddFeesModel extends Model
                     {
                         $return = $return->where('student.last_name', 'like', '%'.Request::get('student_last_name').'%');
                     }
-                    
+
                     if(!empty(Request::get('class_id')))
                     {
                         $return = $return->where('student_add_fees.class_id', '=', Request::get('class_id'));
@@ -68,9 +69,9 @@ class StudentAddFeesModel extends Model
                    }
                    else
                    {
-                        $return = $return->paginate(50); 
+                        $return = $return->paginate(50);
                    }
-                   
+
 
             return $return;
     }
@@ -89,37 +90,37 @@ class StudentAddFeesModel extends Model
     {
          return self::where('student_add_fees.class_id', '=', $class_id)
                     ->where('student_add_fees.student_id', '=', $student_id)
-                    ->where('student_add_fees.is_payment', '=', 1)                    
+                    ->where('student_add_fees.is_payment', '=', 1)
                     ->sum('student_add_fees.paid_amount');
     }
 
     static public function getTotalTodayFees()
     {
-        return self::where('student_add_fees.is_payment', '=', 1)                    
-                    ->whereDate('student_add_fees.created_at', '=', date('Y-m-d'))                    
+        return self::where('student_add_fees.is_payment', '=', 1)
+                    ->whereDate('student_add_fees.created_at', '=', date('Y-m-d'))
                     ->sum('student_add_fees.paid_amount');
     }
 
     static public function getTotalFees()
     {
-        return self::where('student_add_fees.is_payment', '=', 1)                    
+        return self::where('student_add_fees.is_payment', '=', 1)
                     ->sum('student_add_fees.paid_amount');
     }
 
 
     static public function TotalPaidAmountStudent($student_id)
     {
-        return self::where('student_add_fees.is_payment', '=', 1)                    
+        return self::where('student_add_fees.is_payment', '=', 1)
                     ->where('student_add_fees.student_id', '=', $student_id)
                     ->sum('student_add_fees.paid_amount');
     }
 
     static public function TotalPaidAmountStudentParent($student_ids)
     {
-        return self::where('student_add_fees.is_payment', '=', 1)                    
+        return self::where('student_add_fees.is_payment', '=', 1)
                     ->whereIn('student_add_fees.student_id', $student_ids)
                     ->sum('student_add_fees.paid_amount');
     }
 
-    
+
 }

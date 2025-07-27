@@ -30,12 +30,12 @@
 
                   <div class="form-group col-md-2">
                     <label>Kelas</label>
-                    <input type="text" class="form-control" value="{{ Request::get('class_name') }}" name="class_name"  placeholder="Class Name">
+                    <input type="text" class="form-control" value="{{ Request::get('class_name') }}" name="class_name"  placeholder="Nama Kelas">
                   </div>
 
                    <div class="form-group col-md-2">
                     <label>Mata Pelajaran</label>
-                    <input type="text" class="form-control" value="{{ Request::get('subject_name') }}" name="subject_name"  placeholder="Subject Name">
+                    <input type="text" class="form-control" value="{{ Request::get('subject_name') }}" name="subject_name"  placeholder="Nama Mata Pelajaran">
                   </div>
 
 
@@ -109,7 +109,7 @@
                   <tbody>
                       @forelse($getRecord as $value)
                         <tr>
-                          <td>{{ $value->id }}</td>
+                          <td>{{ $loop->iteration }}</td>
                           <td>{{ $value->class_name }}</td>
                           <td>{{ $value->subject_name }}</td>
                           <td>{{ date('d-m-Y', strtotime($value->homework_date)) }}</td>

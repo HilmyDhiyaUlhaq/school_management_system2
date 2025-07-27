@@ -29,18 +29,18 @@
 
                   <div class="form-group col-md-2">
                     <label>ID Siswa</label>
-                    <input type="text" class="form-control" placeholder="Student ID" value="{{ Request::get('student_id') }}" name="student_id">
+                    <input type="text" class="form-control" placeholder="ID Siswa" value="{{ Request::get('student_id') }}" name="student_id">
                   </div>
 
 
                    <div class="form-group col-md-2">
                     <label>Nama Siswa</label>
-                    <input type="text" class="form-control" placeholder="Student Name" value="{{ Request::get('student_name') }}" name="student_name">
+                    <input type="text" class="form-control" placeholder="Nama Siswa" value="{{ Request::get('student_name') }}" name="student_name">
                   </div>
 
                   <div class="form-group col-md-2">
                     <label>Nama Akhir Siswa</label>
-                    <input type="text" class="form-control" placeholder="Student Last Name" value="{{ Request::get('student_last_name') }}" name="student_last_name">
+                    <input type="text" class="form-control" placeholder="Nama Akhir Siswa" value="{{ Request::get('student_last_name') }}" name="student_last_name">
                   </div>
 
 

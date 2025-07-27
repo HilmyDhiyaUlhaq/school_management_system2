@@ -89,8 +89,8 @@
                                 {{ date('d-m-Y', strtotime($value->date_of_birth)) }}
                               @endif
                           </td>
-                          <td>{{ $value->caste }}</td>
-                          <td>{{ $value->religion }}</td>
+
+                          
                           <td>{{ $value->mobile_number }}</td>
                           <td>
                             @if(!empty($value->admission_date))

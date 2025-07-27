@@ -30,7 +30,7 @@
 
                   <div class="form-group col-md-3">
                     <label>Judul</label>
-                    <input type="text" class="form-control" value="{{ Request::get('title') }}" name="title"  placeholder="Title">
+                    <input type="text" class="form-control" value="{{ Request::get('title') }}" name="title"  placeholder="Judul">
                   </div>
                   <div class="form-group col-md-3">
                     <label>Tanggal Pemberitahuan Dari</label>

@@ -29,13 +29,13 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label>Nama Depan <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control" value="{{ old('name', $getRecord->name) }}" name="name" required placeholder="First Name">
+                      <input type="text" class="form-control" value="{{ old('name', $getRecord->name) }}" name="name" required placeholder="Nama Depan">
                       <div style="color:red">{{ $errors->first('name') }}</div>
                     </div>
 
                     <div class="form-group col-md-6">
                       <label>Nama Belakang <span style="color: red;">*</span></label>
-                      <input type="text" class="form-control" value="{{ old('last_name', $getRecord->last_name) }}" name="last_name" required placeholder="Last Name">
+                      <input type="text" class="form-control" value="{{ old('last_name', $getRecord->last_name) }}" name="last_name" required placeholder="Nama Belakang">
                       <div style="color:red">{{ $errors->first('last_name') }}</div>
                     </div>
 
@@ -61,21 +61,13 @@
                     </div>
 
 
-                     <div class="form-group col-md-6">
-                      <label>Kasta <span style="color: red;"></span></label>
-                      <input type="text" class="form-control" value="{{ old('caste', $getRecord->caste) }}" name="caste"  placeholder="Caste">
-                      <div style="color:red">{{ $errors->first('caste') }}</div>
-                    </div>
 
-                    <div class="form-group col-md-6">
-                      <label>Agama <span style="color: red;"></span></label>
-                      <input type="text" class="form-control" value="{{ old('religion', $getRecord->religion) }}" name="religion"  placeholder="Religion">
-                      <div style="color:red">{{ $errors->first('religion') }}</div>
-                    </div>
+
+
 
                     <div class="form-group col-md-6">
                       <label>Nomor HP <span style="color: red;"></span></label>
-                      <input type="text" class="form-control" value="{{ old('mobile_number', $getRecord->mobile_number) }}" name="mobile_number"  placeholder="Mobile Number">
+                      <input type="text" class="form-control" value="{{ old('mobile_number', $getRecord->mobile_number) }}" name="mobile_number"  placeholder="Nomor HP">
                       <div style="color:red">{{ $errors->first('mobile_number') }}</div>
                     </div>
 
@@ -92,21 +84,21 @@
 
                      <div class="form-group col-md-6">
                       <label>Golongan Darah <span style="color: red;"></span></label>
-                      <input type="text" class="form-control" name="blood_group" value="{{ old('blood_group', $getRecord->blood_group) }}" placeholder="Blood Group">
+                      <input type="text" class="form-control" name="blood_group" value="{{ old('blood_group', $getRecord->blood_group) }}" placeholder="golongan Darah">
                       <div style="color:red">{{ $errors->first('blood_group') }}</div>
                     </div>
 
 
                      <div class="form-group col-md-6">
                       <label>Tinggi <span style="color: red;"></span></label>
-                      <input type="text" class="form-control" name="height" value="{{ old('height', $getRecord->height) }}" placeholder="Height">
+                      <input type="text" class="form-control" name="height" value="{{ old('height', $getRecord->height) }}" placeholder="Tinggi">
                       <div style="color:red">{{ $errors->first('height') }}</div>
                     </div>
 
 
                      <div class="form-group col-md-6">
                       <label>Berat <span style="color: red;"></span></label>
-                      <input type="text" class="form-control" name="weight" value="{{ old('weight', $getRecord->weight) }}" placeholder="Weight">
+                      <input type="text" class="form-control" name="weight" value="{{ old('weight', $getRecord->weight) }}" placeholder="Berat">
                       <div style="color:red">{{ $errors->first('weight') }}</div>
                     </div>
 

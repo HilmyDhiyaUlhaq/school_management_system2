@@ -58,30 +58,39 @@ class FeesCollectionController extends Controller
     {
         $getStudent = User::getSingleClass($student_id);
         $paid_amount = StudentAddFeesModel::getPaidAmount($student_id, $getStudent->class_id);
-        if (!empty($request->amount)) {
-            $RemaningAmount = $getStudent->amount - $paid_amount;
-            if ($RemaningAmount >= $request->amount) {
-                $remaning_amount_user =  $RemaningAmount - $request->amount;
 
-                $payment = new StudentAddFeesModel;
-                $payment->student_id = $student_id;
-                $payment->class_id = $getStudent->class_id;
-                $payment->paid_amount = $request->amount;
-                $payment->total_amount = $RemaningAmount;
-                $payment->remaning_amount = $remaning_amount_user;
-                $payment->payment_type = $request->payment_type;
-                $payment->remark = $request->remark;
-                $payment->created_by = Auth::user()->id;
-                $payment->is_payment = 1;
-                $payment->save();
-
-                return redirect()->back()->with('success', "Fees Successfully Add");
-            } else {
-                return redirect()->back()->with('error', "Your amount go to greather than remaning amount");
-            }
-        } else {
-            return redirect()->back()->with('error', "You need add your amount atleast $1");
+        // Validasi input amount
+        if (empty($request->amount) || $request->amount <= 0) {
+            return redirect()->back()->with('error', "Jumlah pembayaran minimal Rp 1.000");
         }
+
+        $RemaningAmount = $getStudent->amount - $paid_amount;
+
+        // Cek jika sudah lunas
+        if ($RemaningAmount <= 0) {
+            return redirect()->back()->with('error', "Pembayaran sudah lunas");
+        }
+
+        // Validasi amount tidak melebihi sisa tagihan
+        if ($request->amount > $RemaningAmount) {
+            return redirect()->back()->with('error', "Jumlah pembayaran tidak boleh melebihi sisa tagihan. Sisa tagihan: Rp " . number_format($RemaningAmount, 0, ',', '.'));
+        }
+
+        $remaning_amount_user = $RemaningAmount - $request->amount;
+
+        $payment = new StudentAddFeesModel;
+        $payment->student_id = $student_id;
+        $payment->class_id = $getStudent->class_id;
+        $payment->paid_amount = $request->amount;
+        $payment->total_amount = $RemaningAmount;
+        $payment->remaning_amount = $remaning_amount_user;
+        $payment->payment_type = $request->payment_type;
+        $payment->remark = $request->remark;
+        $payment->created_by = Auth::user()->id;
+        $payment->is_payment = 1;
+        $payment->save();
+
+        return redirect()->back()->with('success', "Pembayaran berhasil ditambahkan. Sisa tagihan: Rp " . number_format($remaning_amount_user, 0, ',', '.'));
     }
 
 

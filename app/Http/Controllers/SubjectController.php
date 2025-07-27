@@ -40,15 +40,12 @@ class SubjectController extends Controller
     public function edit($id)
     {
         $data['getRecord'] = SubjectModel::getSingle($id);
-        if(!empty($data['getRecord']))
-        {
+        if (!empty($data['getRecord'])) {
             $data['header_title'] = "Edit Subject";
-            return view('admin.subject.edit', $data);    
-        }
-        else
-        {
+            return view('admin.subject.edit', $data);
+        } else {
             abort(404);
-        }       
+        }
     }
 
     public function update($id, Request $request)
@@ -64,11 +61,20 @@ class SubjectController extends Controller
 
     public function delete($id)
     {
-        $save = SubjectModel::getSingle($id);
-        $save->is_delete = 1;
-        $save->save();
+        try {
+            $save = SubjectModel::getSingle($id);
 
-        return redirect()->back()->with('success', "Subject Sucessfully Deleted");
+            if (!empty($save)) {
+                // Hard delete
+                $save->delete();
+
+                return redirect()->back()->with('success', "Subject berhasil dihapus permanen");
+            } else {
+                return redirect()->back()->with('error', "Subject tidak ditemukan");
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
 
@@ -76,7 +82,7 @@ class SubjectController extends Controller
 
     public function MySubject()
     {
-        
+
         $data['getRecord'] = ClassSubjectModel::MySubject(Auth::user()->class_id);
 
         $data['header_title'] = "My Subject";

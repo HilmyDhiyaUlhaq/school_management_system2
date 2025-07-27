@@ -129,21 +129,21 @@
                                       <input type="hidden" name="mark[{{ $i }}][passing_mark]" value="{{ $subject->passing_mark }}">
                                       <input type="hidden" name="mark[{{ $i }}][id]" value="{{ $subject->id }}">
                                       <input type="hidden" name="mark[{{ $i }}][subject_id]" value="{{ $subject->subject_id }}">
-                                      <input type="text" name="mark[{{ $i }}][class_work]" id="class_work_{{ $student->id }}{{ $subject->subject_id }}" style="width:200px;" placeholder="Enter Marks" value="{{ !empty($getMark->class_work) ? $getMark->class_work : ''  }}" class="form-control">
+                                      <input type="text" name="mark[{{ $i }}][class_work]" id="class_work_{{ $student->id }}{{ $subject->subject_id }}" style="width:200px;" placeholder="Masukkan Nilai" value="{{ !empty($getMark->class_work) ? $getMark->class_work : ''  }}" class="form-control">
                                   </div>
                                   <div style="margin-bottom: 10px;">
                                       Pekerjaan Rumah
-                                      <input type="text" id="home_work_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][home_work]" style="width:200px;" placeholder="Enter Marks" value="{{ !empty($getMark->home_work) ? $getMark->home_work : ''  }}" class="form-control">
+                                      <input type="text" id="home_work_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][home_work]" style="width:200px;" placeholder="Masukkan Nilai" value="{{ !empty($getMark->home_work) ? $getMark->home_work : ''  }}" class="form-control">
                                   </div>
 
                                   <div style="margin-bottom: 10px;">
                                       Pekerjaan Tes
-                                      <input type="text" id="test_work_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][test_work]" style="width:200px;" placeholder="Enter Marks" value="{{ !empty($getMark->test_work) ? $getMark->test_work : ''  }}" class="form-control">
+                                      <input type="text" id="test_work_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][test_work]" style="width:200px;" placeholder="Masukkan Nilai" value="{{ !empty($getMark->test_work) ? $getMark->test_work : ''  }}" class="form-control">
                                   </div>
 
                                   <div style="margin-bottom: 10px;">
                                         Ujian
-                                      <input type="text" id="exam_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][exam]" style="width:200px;" placeholder="Enter Marks" class="form-control" value="{{ !empty($getMark->exam) ? $getMark->exam : ''  }}">
+                                      <input type="text" id="exam_{{ $student->id }}{{ $subject->subject_id }}" name="mark[{{ $i }}][exam]" style="width:200px;" placeholder="Masukkan Nilai" class="form-control" value="{{ !empty($getMark->exam) ? $getMark->exam : ''  }}">
                                   </div>
 
                                   <div style="margin-bottom: 10px;">

@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\AutoIdManager;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MarksGradeModel extends Model
 {
+    use AutoIdManager;
+
     use HasFactory;
 
     protected $table = 'marks_grade';

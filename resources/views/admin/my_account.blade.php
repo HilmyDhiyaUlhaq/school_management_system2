@@ -29,7 +29,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" class="form-control" name="name" value="{{ old('name', $getRecord->name) }}" required placeholder="Name">
+                    <input type="text" class="form-control" name="name" value="{{ old('name', $getRecord->name) }}" required placeholder="Nama">
                   </div>
                   <div class="form-group">
                     <label>Email</label>

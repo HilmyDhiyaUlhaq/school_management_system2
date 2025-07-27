@@ -109,7 +109,7 @@
                   <tbody>
                       @forelse($getRecord as $value)
                         <tr>
-                          <td>{{ $value->id }}</td>
+                          <td>{{ $loop->iteration }}</td>
                           <td>{{ $value->class_name }}</td>
                           <td>{{ $value->subject_name }}</td>
                           <td>{{ date('d-m-Y', strtotime($value->homework_date)) }}</td>

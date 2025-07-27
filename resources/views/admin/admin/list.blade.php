@@ -13,7 +13,7 @@
             <h1>Admin List (Total : {{ $getRecord->total() }})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right;">
-              <a href="{{ url('admin/admin/add') }}" class="btn btn-primary">Add New Admin</a>
+              <a href="{{ url('admin/admin/add') }}" class="btn btn-primary">Tambahkan Admin Baru</a>
           </div>
 
 
@@ -48,7 +48,7 @@
 
                   <div class="form-group col-md-3">
                     <label>Name</label>
-                    <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name"  placeholder="Name">
+                    <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name"  placeholder="Nama">
                   </div>
                   <div class="form-group col-md-3">
                     <label>Email</label>
@@ -57,7 +57,7 @@
 
                     <div class="form-group col-md-3">
                     <label>Date</label>
-                    <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}"  placeholder="Email">
+                    <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}"  placeholder="Tanggal">
                   </div>
 
                   <div class="form-group col-md-3">
@@ -98,7 +98,7 @@
                     <tbody>
                       @foreach($getRecord as $value)
                         <tr>
-                          <td>{{ $value->id }}</td>
+                          <td>{{ $loop->iteration }}</td>
                           <td class="text-center">
                             @if(!empty($value->getProfileDirect()))
                             <img src="{{ $value->getProfileDirect() }}" class="img-circle elevation-2" style="height: 50px; width:50px;">
